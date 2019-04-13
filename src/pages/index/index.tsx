@@ -1,8 +1,12 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import { connect } from '@tarojs/redux';
 import './index.scss'
 
-export default class Index extends Component {
+@connect(({ global }) => ({
+  global
+}))
+export default class Index extends Component<any> {
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -15,20 +19,26 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillMount () { }
+  componentWillMount() { }
 
-  componentDidMount () { }
+  componentDidMount() { }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
-  render () {
+  render() {
+    const { global } = this.props;
     return (
       <View className='index'>
-        <Text>Hello world!</Text>
+        <View>
+          <Text>Hello world!</Text>
+        </View>
+        <View>
+          <Text>{global.hello}</Text>
+        </View>
       </View>
     )
   }
