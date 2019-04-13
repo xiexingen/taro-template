@@ -1,13 +1,12 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import Taro, { Component, Config } from '@tarojs/taro';
+import { View, Text } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
-import './index.scss'
+import './index.scss';
 
 @connect(({ global }) => ({
-  global
+  global,
 }))
 export default class Index extends Component<any> {
-
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -16,23 +15,13 @@ export default class Index extends Component<any> {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '首页'
-  }
-
-  componentWillMount() { }
-
-  componentDidMount() { }
-
-  componentWillUnmount() { }
-
-  componentDidShow() { }
-
-  componentDidHide() { }
+    navigationBarTitleText: '首页',
+  };
 
   render() {
     const { global } = this.props;
     return (
-      <View className='index'>
+      <View className="index">
         <View>
           <Text>Hello world!</Text>
         </View>
@@ -40,6 +29,6 @@ export default class Index extends Component<any> {
           <Text>{global.hello}</Text>
         </View>
       </View>
-    )
+    );
   }
 }

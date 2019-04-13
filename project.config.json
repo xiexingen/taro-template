@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "taro-template",
   "description": "基于taro+dva+ts的模板项目",
-  "appid": "touristappid",
+  "appid": "wxf5e38e25bbe4eea6",
   "setting": {
     "urlCheck": true,
     "es6": false,
