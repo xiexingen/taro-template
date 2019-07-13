@@ -1,8 +1,8 @@
 {
-	"name": "taro-template",
+	"name": "mini-car",
 	"version": "1.0.0",
 	"private": true,
-	"description": "基于taro+dva+ts的模板项目",
+	"description": "车展",
 	"scripts": {
 		"build:weapp": "taro build --type weapp",
 		"build:swan": "taro build --type swan",
@@ -10,7 +10,7 @@
 		"build:tt": "taro build --type tt",
 		"build:h5": "taro build --type h5",
 		"build:rn": "taro build --type rn",
-		"dev:weapp": "npm run build:weapp -- --watch",
+		"start": "npm run build:weapp -- --watch",
 		"dev:swan": "npm run build:swan -- --watch",
 		"dev:alipay": "npm run build:alipay -- --watch",
 		"dev:tt": "npm run build:tt -- --watch",
@@ -18,7 +18,7 @@
 		"dev:rn": "npm run build:rn -- --watch",
 		"test": "umi-test",
 		"lint": "umi-lint  --tslint --eslint --stylelint ./src",
-		"precommit": "umi-lint --staged --tslint  --eslint --stylelint --prettier --fix"
+		"precommit": "umi-lint --staged --tslint  --eslint --stylelint"
 	},
 	"author": "",
 	"license": "MIT",

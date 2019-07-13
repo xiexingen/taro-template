@@ -1,8 +1,10 @@
 import Taro from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
+import withShare from '@/components/withShare'
 import logoImg from '../../assets/images/logo_taro.png'
 import './index.scss'
 
+@withShare()
 export default class Index extends Taro.Component<any,any> {
   config = {
     navigationBarTitleText: 'Taro UI'
@@ -14,7 +16,7 @@ export default class Index extends Taro.Component<any,any> {
     this.state = {
       list: [
         {
-          id: 'Basic',
+          id: 'swapper',
           title: '基础',
           content: '按钮组件',
         },
@@ -51,13 +53,13 @@ export default class Index extends Taro.Component<any,any> {
     }
   }
 
-  onShareAppMessage () {
-    return {
-      title: 'Taro UI',
-      path: '/pages/index/index',
-      imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg'
-    }
-  }
+  // onShareAppMessage () {
+  //   return {
+  //     title: 'Taro UI',
+  //     path: '/pages/index/index',
+  //     imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg'
+  //   }
+  // }
 
   gotoPanel = e => {
     const { id } = e.currentTarget.dataset

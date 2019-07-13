@@ -32,6 +32,9 @@ const config = {
     options: {
     }
   },
+  alias:{
+    '@':'src'
+  },
   weapp: {
     module: {
       postcss: {
