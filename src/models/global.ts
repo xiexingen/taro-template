@@ -1,8 +1,14 @@
-export default {
-  namespace: "global",
+import extend from '@/utils/model';
+
+export default extend({
+  namespace: 'global',
   state: {
-    hello:'hello,来源于global model中的state信息'
+    selected:-1
   },
-  reducers: {},
-  effects: {}
-};
+  effects: {
+    *sendSMS({payload}, { call }) {
+      const result=yield call('',payload);
+      return result;
+    }
+  }
+});

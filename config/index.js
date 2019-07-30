@@ -1,6 +1,6 @@
 const config = {
   projectName: 'taro-template',
-  date: '2019-4-13',
+  date: '2019-7-30',
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,
@@ -26,14 +26,14 @@ const config = {
   },
   defineConstants: {
   },
+  alias:{
+    '@':'src'
+  },
   copy: {
     patterns: [
     ],
     options: {
     }
-  },
-  alias:{
-    '@':'src'
   },
   weapp: {
     module: {
@@ -73,7 +73,6 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
-    esnextModules: ['taro-ui'],
     module: {
       postcss: {
         autoprefixer: {
@@ -87,7 +86,7 @@ const config = {
           }
         },
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+          enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
           config: {
             namingPattern: 'module', // 转换模式，取值为 global/module
             generateScopedName: '[name]__[local]___[hash:base64:5]'

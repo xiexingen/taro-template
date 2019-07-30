@@ -1,12 +1,16 @@
 {
-  "extends": ["stylelint-config-standard","stylelint-config-css-modules", "stylelint-config-prettier"],
-  "plugins": ["stylelint-declaration-block-no-ignored-properties"],
+  "extends": ["stylelint-config-taro-rn","stylelint-taro-rn"],
   "rules": {
-    "no-descending-specificity": null,
-    "plugin/declaration-block-no-ignored-properties": true,
-    "declaration-empty-line-before": null,
-    "selector-pseudo-class-no-unknown": null,
-    "selector-pseudo-element-colon-notation":null,
-    "no-missing-end-of-source-newline":null
+    "taro-rn/css-property-no-unknown":null,
+    "property-no-vendor-prefix":null,
+    "taro-rn/font-weight-no-ignored-values": null,
+    "at-rule-blacklist": null,
+    "unit-whitelist": null,
+    "selector-pseudo-class-whitelist": null,
+    "selector-max-universal": null,
+    "selector-max-attribute": null,
+    "selector-max-type": null,
+    "selector-max-combinators": null,
+    "selector-max-id": null
   }
 }

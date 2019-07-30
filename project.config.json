@@ -1,16 +1,16 @@
 {
-	"miniprogramRoot": "dist/",
-	"projectname": "mini-car",
-	"description": "车展小程序",
-	"appid": "wxf5e38e25bbe4eea6",
-	"setting": {
-		"urlCheck": true,
-		"es6": false,
-		"postcss": false,
-		"minified": false
-	},
-	"compileType": "miniprogram",
-	"simulatorType": "wechat",
+  "miniprogramRoot": "./dist",
+  "projectname": "taro-template",
+  "description": "基于taro+taro-ui+dva的模板项目",
+  "appid": "wxf5e38e25bbe4eea6",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {}
 }
