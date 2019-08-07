@@ -4,31 +4,35 @@ import  createLoading  from "dva-loading";
 
 let app
 let store
-let dispatch
 let registered
 
-function createApp(opt) {
-    // redux 的日志
-    opt.onAction = [createLogger()]
-    app = create(opt)
+function createApp(options) {
+    if (process.env.NODE_ENV === 'development') {
+         // redux 的日志
+        options.onAction = [createLogger()]
+    }
+   
+    app = create({
+        ...options
+    })
     app.use(createLoading({}))
 
     if (!registered) {
-        opt.models.forEach(model => app.model(model));
+        options.models.forEach(model => app.model(model));
     }
     registered = true;
     app.start()
 
     store = app._store;
     app.getStore = () => store;
+    
     app.use({
         onError(err){
             console.log(err);
         }
     })
 
-    dispatch = store.dispatch;
-    app.dispatch = dispatch;
+    app.dispatch = store.dispatch;
     return app;
 }
 

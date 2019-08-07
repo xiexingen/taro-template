@@ -1,6 +1,4 @@
 import Taro from '@tarojs/taro';
-// import { connect } from '@tarojs/redux';
-import defaultShareImg from '@/assets/images/pages/slide1_2.jpg';
 
 export interface IShareProps {
   title?: string;
@@ -8,7 +6,19 @@ export interface IShareProps {
   path?: string;
 }
 
-const Index=(opts: IShareProps={title:'选MINI,个性不装衫',imgUrl:defaultShareImg,path:'pages/index/index'}):any=>(WrapComponent) =>{
+
+/**
+ * 分享通用对象
+ */
+const SHAREAPPMESSAGE:Taro.ShareAppMessageReturn={
+  title:'taro-template',
+  path:'pages/index/index',
+  imageUrl:require('@/assets/images/pages/logo.png'),
+}
+
+export {SHAREAPPMESSAGE}
+
+const Index=(opts: IShareProps=SHAREAPPMESSAGE):any=>(WrapComponent) =>{
   class WithShare extends WrapComponent {
     componentWillMount() {
       Taro.showShareMenu({

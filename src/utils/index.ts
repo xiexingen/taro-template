@@ -6,31 +6,31 @@ export const isWechat = Taro.getEnv() === Taro.ENV_TYPE.WEAPP;
 
 /*获取当前页url*/
 export const getCurrentPageUrl = () => {
-    const pages = Taro.getCurrentPages();
-    const currentPage = pages[pages.length - 1];
-    const url = currentPage.route;
-    return url;
+  const pages = Taro.getCurrentPages();
+  const currentPage = pages[pages.length - 1];
+  const url = currentPage.route;
+  return url;
 };
 
 export const pageToLogin = () => {
-    const path = getCurrentPageUrl();
-    if (!path.includes('login')) {
-        Taro.navigateTo({
-            url: '/pages/login/index',
-        });
-    }
+  const path = getCurrentPageUrl();
+  if (!path.includes('login')) {
+    Taro.navigateTo({
+      url: '/pages/login/index',
+    });
+  }
 };
 
 /**
  * 金额千分位格式化
  * @param str 要格式化的金额
  */
-export const formatCurrency=(str:any)=>{
-    if(typeof str=== 'undefined' || str===null){
-        return '';
-    }
-    return `${str}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+export const formatCurrency = (str: any) => {
+  if (typeof str === 'undefined' || str === null) {
+    return '';
   }
+  return `${str}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
 
 // export const base64Encode=(str)=>{
 //   var c1, c2, c3;
