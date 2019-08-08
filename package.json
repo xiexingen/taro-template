@@ -27,7 +27,7 @@
 		"dev:quickapp": "npm run build:quickapp -- --watch",
 		"test": "umi-test",
 		"lint": "umi-lint --eslint.ext='.ts,.tsx.,.js,.jsx' --stylelint ./src",
-		"page": "node scripts/template",
+		"page": "node scripts/page",
 		"component": "node scripts/component"
 	},
 	"author": "xiexingen",
@@ -49,6 +49,7 @@
 		"dva-core": "^1.4.0",
 		"dva-loading": "^3.0.12",
 		"dva-model-extend": "^0.1.2",
+		"moment": "^2.24.0",
 		"nerv-devtools": "^1.4.3",
 		"nervjs": "^1.4.3",
 		"redux": "^4.0.4",

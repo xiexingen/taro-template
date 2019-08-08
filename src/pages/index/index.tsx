@@ -1,9 +1,13 @@
 import Taro, { Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+// import { connect } from '@tarojs/redux';
+import { View } from '@tarojs/components'
 import {PureComponent} from '@/utils/BaseComponent'
 import styles from './index.module.scss'
 
-export default class Index extends PureComponent {
+// @connect(({  }) => ({
+
+// }))
+export default class Index extends PureComponent<any,any> {
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -29,7 +33,7 @@ export default class Index extends PureComponent {
   render () {
     return (
       <View className={styles.index}>
-        <Text>Hello world!</Text>
+        Hello world!
       </View>
     )
   }

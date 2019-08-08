@@ -7,6 +7,6 @@ interface IGlobalData{
 /**
  * 全局数据
  */
-export const globalData:IGlobalData={
+export let globalData:IGlobalData={
 
 };

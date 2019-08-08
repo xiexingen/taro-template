@@ -4,7 +4,7 @@
 	"description": "基于taro+taro-ui+dva的模板项目",
 	"appid": "wxf5e38e25bbe4eea6",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": false,
 		"minified": false

@@ -27,7 +27,8 @@ const config = {
   defineConstants: {
   },
   alias:{
-    '@':'src'
+    // '@':'src',
+    '@':path.resolve(__dirname, '..', 'src')
   },
   copy: {
     patterns: [

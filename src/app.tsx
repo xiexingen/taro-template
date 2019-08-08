@@ -2,18 +2,16 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import "@tarojs/async-await";
 import { Provider } from "@tarojs/redux";
 import dva from './dva';
-import './utils/request';
 import {globalData} from './utils/global'
 
 import models from './models'
 import Index from './pages/index'
 import './app.scss'
 
-// 如果需要在 h5 环境中开启 React Devtools
-// 取消以下注释：
-// if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
-//   require('nerv-devtools')
-// }
+// h5开发环境开启调试模式
+if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
+  require('nerv-devtools')
+}
 
 
 const dvaApp = dva.createApp({
@@ -51,22 +49,22 @@ class App extends Component {
    *  3.获取小程序的设备信息 globalData.systemInfo
    */
   async componentDidMount () {
-    // // 获取参数
-    // const referrerInfo:any = this.$router.params.referrerInfo
-    // const query = this.$router.params.query
-    // !globalData.extraData && (globalData.extraData = {})
-    // if (referrerInfo && referrerInfo.extraData) {
-    //   globalData.extraData = referrerInfo.extraData
-    // }
-    // if (query) {
-    //   globalData.extraData = {
-    //     ...globalData.extraData
-    //   }
-    // }
+    // 获取参数
+    const referrerInfo:any = this.$router.params.referrerInfo
+    const query = this.$router.params.query
+    !globalData.extraData && (globalData.extraData = {})
+    if (referrerInfo && referrerInfo.extraData) {
+      globalData.extraData = referrerInfo.extraData
+    }
+    if (query) {
+      globalData.extraData = {
+        ...globalData.extraData
+      }
+    }
 
-    // // 获取设备信息
-    // const sys = await Taro.getSystemInfoSync()
-    // sys && (globalData.systemInfo = sys)
+    // 获取设备信息
+    const sys = await Taro.getSystemInfoSync()
+    sys && (globalData.systemInfo = sys)
   }
 
   componentDidShow () {}
