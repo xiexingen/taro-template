@@ -58,18 +58,11 @@ taro update project // 在项目下运行，用于升级项目
 
 ##### 快速生成页面
 ~~~
-yarn page '文件名'
+yarn page '[路径/]文件名'
 
 example
-yarn page order/index
-~~~
-
-##### 快速生成组件
-~~~
-yarn component '文件名'
-
-example
-yarn page components/withShare
+1. yarn page order
+2. yarn page sales/order
 ~~~
 
 ## 项目编译和预览
