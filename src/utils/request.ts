@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 // import { pageToLogin } from '@/utils';
-import {apiKey} from '@/constants'
+import { apiKey } from '@/constants';
 
 // const customInterceptor = chain => {
 //   const requestParams = chain.requestParams;
@@ -41,97 +41,98 @@ export const HTTP_STATUS = {
   GATEWAY_TIMEOUT: 504,
 };
 
-interface IRequest{
-    url:string;
-    data?:any
+interface IRequest {
+  url: string;
+  data?: any;
 }
 
-function request<TInput = any>(opt: Taro.request.Param<TInput>): Promise<any>  {
-    const option = {
-      ...opt,
-      header: {
-        // 'Authorization': Taro.getStorageSync('Authorization'),
-        ...opt.header
-      }
-    };
+function request<TInput = any>(opt: Taro.request.Param<TInput>): Promise<any> {
+  const option = {
+    ...opt,
+    header: {
+      // 'Authorization': Taro.getStorageSync('Authorization'),
+      ...opt.header,
+    },
+  };
 
-    return new Promise((resolve, reject) => {
-      Taro.request({
-        ...option,
-        header: {
-          'MINI-API-KEY':apiKey,
-          'Content-Type':'application/json'
-        },
-      }).then((result) => {
-        if(result.statusCode!==200){
+  return new Promise((resolve, reject) => {
+    Taro.request({
+      ...option,
+      header: {
+        'MINI-API-KEY': apiKey,
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(result => {
+        if (result.statusCode !== 200) {
           Taro.showToast({
             title: '网络异常',
-            icon:'none'
-          })
-          reject('网络异常')
+            icon: 'none',
+          });
+          reject('网络异常');
         }
         // TODO 后端api有问题 暂时先忽略状态判断
-          const {results,errorMessage,apiStatus,APIStatus}=result.data;
-          if(!errorMessage){ // apiStatus===1||APIStatus===1
-            resolve(results)
-          }
-          else{
-            Taro.showToast({
-              title: errorMessage,
-              icon:'none'
-            })
-            reject(result.data)
-          }
-        })
-        .catch(error => {
+        const { results, errorMessage } = result.data;
+        if (!errorMessage) {
+          // apiStatus===1||APIStatus===1
+          resolve(results);
+        } else {
           Taro.showToast({
-            title: '网络异常',
-            icon:'none'
-          })
-          reject(error);
-        })
-    })
+            title: errorMessage,
+            icon: 'none',
+          });
+          reject(result.data);
+        }
+      })
+      .catch(error => {
+        Taro.showToast({
+          title: '网络异常',
+          icon: 'none',
+        });
+        reject(error);
+      });
+  });
 
-    // return Taro.request<TOut,TInput>(option).then(result=>{
-    //   return result.data['data'];
-    // });
+  // return Taro.request<TOut,TInput>(option).then(result=>{
+  //   return result.data['data'];
+  // });
+}
+
+function get(opt: IRequest | string) {
+  let option: IRequest;
+  if (typeof opt === 'string') {
+    option = {
+      url: opt as string,
+    };
+  } else {
+    option = opt as IRequest;
   }
+  return request({
+    ...option,
+    method: 'GET',
+  });
+}
 
-  function get(opt:IRequest|string) {
-      let option:IRequest;
-      if(typeof opt ==="string"){
-          option={
-              url:opt as string
-          }
-      }else{
-          option=opt as IRequest;
-      }
-    return request({
-        ...option,
-        method:'GET'
-    });
-  }
+function post(opt: IRequest) {
+  return request({
+    ...opt,
+    method: 'POST',
+  });
+}
 
-  function post(opt:IRequest) {
-    return request({
-        ...opt,
-        method:'POST'
-    })
-  }
+function put(opt: IRequest) {
+  return request({
+    method: 'PUT',
+    ...opt,
+  });
+}
 
-  function put(opt:IRequest) {
-    return request({
-        method:"PUT",
-        ...opt
-    })
-  }
+function del(opt: IRequest) {
+  return request({
+    method: 'DELETE',
+    ...opt,
+  });
+}
 
-  function del(opt:IRequest) {
-    return request({
-        method:'DELETE',
-        ...opt
-    })
-  }
-
-  export default request;
-  export {get,post,put,del}
+export default request;
+export { get, post, put, del };

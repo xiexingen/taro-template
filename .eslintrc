@@ -4,17 +4,22 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     },
     "useJSXTextNode": true,
     "project": "./tsconfig.json"
   },
+  "globals": {
+    "wx": false,
+    "global": true
+  },
   "rules": {
     "no-unused-vars": [
       "error",
       {
-        "varsIgnorePattern": "Taro"
+        "varsIgnorePattern": "[Taro|IPureComponentProps]"
       }
     ],
     "react/jsx-filename-extension": [
@@ -28,5 +33,5 @@
         ]
       }
     ]
-  } 
+  }
 }

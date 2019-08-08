@@ -27,8 +27,8 @@ if (!pageName) {
 }
 
 // 页面模板构建
-const pageTemplate = `
-import Taro, { Config } from '@tarojs/taro'
+const pageTemplate = 
+`import Taro, { Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux';
 import { View } from '@tarojs/components'
 import { PureComponent } from '@/utils/BaseComponent'
@@ -60,6 +60,9 @@ class ${componentName} extends PureComponent<${componentName}Props,${componentNa
         return (
             <View className={styles.container}>
                 页面内容
+                {
+                    this.renderLoading()
+                }
             </View>
         )
     }
@@ -68,8 +71,8 @@ export default ${componentName}
 `
 
 // scss 模板
-const scssTemplate = `
-@import "@/assets/scss/theme";
+const scssTemplate = 
+`@import "@/assets/scss/theme";
 
 .container{
 
@@ -78,8 +81,8 @@ const scssTemplate = `
 
 
 // model 模板
-const modelTemplate = `
-import extend from '@/utils/model';
+const modelTemplate = 
+`import extend from '@/utils/model';
 import * as ${pageName}Api from './service';
 
 export default extend({
@@ -88,12 +91,13 @@ export default extend({
         
     },
     effects:{
-        *get({ payload }, { call,put }) {
-            const result = yield call(${pageName}Api.get,payload);
+        *getList({ payload }, { call,put }) {
+            const result = yield call(${pageName}Api.getList,payload);
             yield put({
                 type:'update',
                 payload:{
                     // TODO 
+                    result
                 }
             });
         },
@@ -101,13 +105,13 @@ export default extend({
 });
 `
 // 接口模板
-const serviceTemplate=`
-import {get,post} from '@/utils/request';
+const serviceTemplate=
+`import {get,post} from '@/utils/request';
 import { apiPreFix } from '@/constants';
 
-export function get(data){
+export function getList(data){
     return get({
-        url:\`\${apiPreFix}${pageName}/get\`,
+        url:\`\${apiPreFix}${pageName}/getList\`,
         data
     });
 }
@@ -121,7 +125,8 @@ export function create(data){
 `
 
 // 属性模板
-const interfaceTemplate = `
+const interfaceTemplate = 
+`import { IPureComponentProps } from '@/utils/BaseComponent'
 /**
  * ${pageName} state 参数类型
  */
@@ -132,7 +137,7 @@ export interface ${componentName}State {
 /**
  * ${pageName} props 参数类型
  */
-export interface ${componentName}Props {
+export interface ${componentName}Props extends IPureComponentProps{
 
 }
 `
