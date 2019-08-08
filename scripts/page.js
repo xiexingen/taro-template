@@ -10,17 +10,19 @@ const inputPath=process.argv[2];
 let pageName=inputPath;// 文件名
 let pagePath=''; // 路径
 // 如果路径中带/ 则解析出路径以及组件名
+const modelNamespace=inputPath.replace('/','_');
 if(inputPath.indexOf('/')!==-1){
     var lastSplitIndex=inputPath.lastIndexOf("/");
-    pagePath=str.substr(0,lastSplitIndex);
-    pageName=str.substr(lastSplitIndex+1);
+    pagePath=inputPath.substr(0,lastSplitIndex);
+    pageName=inputPath.substr(lastSplitIndex+1);
 }
 
 const componentName = pageName.substring(0, 1).toUpperCase() + pageName.substring(1);
 
 if (!pageName) {
     console.log('文件名不能为空');
-    console.log('用法1：yarn page order/index');
+    console.log('用法1：yarn page order');
+    console.log('用法2：yarn page order/sales');
     process.exit(0);
 }
 
@@ -33,10 +35,9 @@ import { PureComponent } from '@/utils/BaseComponent'
 
 import { ${componentName}Props, ${componentName}State } from './${pageName}.interface'
 import styles from './${pageName}.module.scss'
-// import {  } from '../../components'
 
-@connect(({ ${pageName} }) => ({
-    ...${pageName},
+@connect(({ ${modelNamespace} }) => ({
+    ...${modelNamespace},
 }))
 class ${componentName} extends PureComponent<${componentName}Props,${componentName}State > {
 
@@ -82,41 +83,65 @@ import extend from '@/utils/model';
 import * as ${pageName}Api from './service';
 
 export default extend({
-    namespace: '${pageName}',
+    namespace: '${modelNamespace}',
     state: {
         
+    },
+    effects:{
+        *get({ payload }, { call,put }) {
+            const result = yield call(${pageName}Api.get,payload);
+            yield put({
+                type:'update',
+                payload:{
+                    // TODO 
+                }
+            });
+        },
     }
 });
+`
+// 接口模板
+const serviceTemplate=`
+import {get,post} from '@/utils/request';
+import { apiPreFix } from '@/constants';
+
+export function get(data){
+    return get({
+        url:\`\${apiPreFix}${pageName}/get\`,
+        data
+    });
+}
+
+export function create(data){
+    return post({
+        url:\`\${apiPreFix}${pageName}/create\`,
+        data
+    });
+}
 `
 
 // 属性模板
 const interfaceTemplate = `
 /**
- * ${pageName}.state 参数类型
- *
- * @export
- * @interface ${componentName}State
+ * ${pageName} state 参数类型
  */
 export interface ${componentName}State {
 
 }
 
 /**
- * ${pageName}.props 参数类型
- *
- * @export
- * @interface ${componentName}Props
+ * ${pageName} props 参数类型
  */
 export interface ${componentName}Props {
 
 }
 `
 
-fs.mkdirSync(`./src/pages/${pagePath?pagePath+'/':''}${pageName}`); // mkdir $1
+fs.mkdirSync(`./src/pages/${pagePath?pagePath+'/':''}${pageName}`,{recursive:true}); // mkdir $1
 process.chdir(`./src/pages/${pagePath?pagePath+'/':''}${pageName}`); // cd $1
 
-fs.writeFileSync(`${pageName}.tsx`, pageTemplate); //tsx
-fs.writeFileSync(`${pageName}.scss`, scssTemplate); // scss
+fs.writeFileSync(`index.tsx`, pageTemplate); //tsx
+fs.writeFileSync(`index.scss`, scssTemplate); // scss
 fs.writeFileSync('service.ts', serviceTemplate); // service
 fs.writeFileSync('model.ts', modelTemplate); // model
 fs.writeFileSync(`${pageName}.interface.ts`, interfaceTemplate); // interface

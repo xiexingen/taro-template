@@ -2,6 +2,14 @@
   "extends": [
     "plugin:taro/all"
   ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "useJSXTextNode": true,
+    "project": "./tsconfig.json"
+  },
   "rules": {
     "no-unused-vars": [
       "error",
@@ -10,7 +18,7 @@
       }
     ],
     "react/jsx-filename-extension": [
-      1,
+      0,
       {
         "extensions": [
           ".js",
@@ -20,13 +28,5 @@
         ]
       }
     ]
-  },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "useJSXTextNode": true,
-    "project": "./tsconfig.json"
-  }
+  } 
 }

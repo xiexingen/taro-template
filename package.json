@@ -27,8 +27,7 @@
 		"dev:quickapp": "npm run build:quickapp -- --watch",
 		"test": "umi-test",
 		"lint": "umi-lint --eslint.ext='.ts,.tsx.,.js,.jsx' --stylelint ./src",
-		"page": "node scripts/page",
-		"component": "node scripts/component"
+		"page": "node scripts/page"
 	},
 	"author": "xiexingen",
 	"license": "MIT",
