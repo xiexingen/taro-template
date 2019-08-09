@@ -72,3 +72,11 @@ export const navigateToWithFail = (option: { url },isBack?:boolean) => {
         },
     });
 };
+
+/*获取当前页url*/
+export const getCurrentPageUrl = () => {
+    let pages = getPages();
+    let currentPage = pages[pages.length - 1];
+    return currentPage;
+  };
+  

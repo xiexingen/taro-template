@@ -3,7 +3,7 @@ import "@tarojs/async-await";
 import { Provider } from "@tarojs/redux";
 import dva from './dva';
 import {globalData} from './utils/global'
-
+import {clear} from '@/utils/navigate'
 import models from './models'
 import Index from './pages/index'
 import './app.scss'
@@ -65,6 +65,8 @@ class App extends Component {
     // 获取设备信息
     const sys = await Taro.getSystemInfoSync()
     sys && (globalData.systemInfo = sys)
+
+    clear();
   }
 
   componentDidShow () {}

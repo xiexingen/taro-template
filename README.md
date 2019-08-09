@@ -1,6 +1,11 @@
 # 基于taro+dva+taro-ui+typescript的多端开发框架
 
-## 开始
+## 目录
+
+- [开始学习](#开始学习)
+  - [前期工作准备](#前期工作准备)
+
+## 开始学习
 
 #### 前期工作准备
 
@@ -20,6 +25,8 @@ $ cnpm install -g @tarojs/cli
 #### 项目结构说明
 - `config`: 项目配置文件
 - `scripts`: 项目的模板文件(组件、页面模板会根据里面的模板来生成，可根据需要自行定制)
+- `docs`: 文档
+- `mock`: 本地mock
 - `src`: 源码文件
     - `assets`: 一些静态资源，比如：font、images、iconfont、scss等
     - `components`: 项目编写的一些共用组件
@@ -125,7 +132,9 @@ $ yarn dev:rn
 ## TODO List
 
 - [√] scss模块化
-- [] 使用iconfont字体图标
+- [ ] 使用字体图标
+- [ ] 本地化mock支持
+- [ ] lint、prettier支持
 - [ ] 通用组件完善
   - [ ] 海报组件
   - [ ] 自定义头部

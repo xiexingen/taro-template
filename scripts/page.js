@@ -107,7 +107,7 @@ export default extend({
 // 接口模板
 const serviceTemplate=
 `import {get,post} from '@/utils/request';
-import { apiPreFix } from '@/constants';
+import { apiPreFix } from '@/services/config';
 
 export function getList(data){
     return get({
@@ -146,7 +146,7 @@ fs.mkdirSync(`./src/pages/${pagePath?pagePath+'/':''}${pageName}`,{recursive:tru
 process.chdir(`./src/pages/${pagePath?pagePath+'/':''}${pageName}`); // cd $1
 
 fs.writeFileSync(`index.tsx`, pageTemplate); //tsx
-fs.writeFileSync(`index.scss`, scssTemplate); // scss
+fs.writeFileSync(`index.module.scss`, scssTemplate); // scss
 fs.writeFileSync('service.ts', serviceTemplate); // service
 fs.writeFileSync('model.ts', modelTemplate); // model
 fs.writeFileSync(`${pageName}.interface.ts`, interfaceTemplate); // interface
