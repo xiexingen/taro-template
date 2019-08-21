@@ -2,3 +2,9 @@
 **/*.svg
 **/*.ejs
 **/*.html
+package.json
+yarn.lock
+.umi
+.umi-production
+dist
+.temp

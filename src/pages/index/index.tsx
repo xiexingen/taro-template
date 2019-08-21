@@ -1,14 +1,13 @@
-import Taro, { Config } from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 // import { connect } from '@tarojs/redux';
-import { View } from '@tarojs/components'
-import {PureComponent} from '@/utils/BaseComponent'
-import styles from './index.module.scss'
+import { View } from '@tarojs/components';
+import { AtButton } from 'taro-ui';
+import styles from './index.scss';
 
 // @connect(({  }) => ({
 
 // }))
-export default class Index extends PureComponent<any,any> {
-
+export default class Index extends Taro.PureComponent {
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -16,25 +15,42 @@ export default class Index extends PureComponent<any,any> {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-  config: Config = {
-    navigationBarTitleText: '首页'
-  }
+  config = {
+    navigationBarTitleText: '首页',
+  };
 
-  componentWillMount () { }
+  componentWillMount() {}
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentWillUnmount () { }
+  componentWillUnmount() {}
 
-  componentDidShow () { }
+  componentDidShow() {}
 
-  componentDidHide () { }
+  componentDidHide() {}
 
-  render () {
+  render() {
     return (
-      <View className={styles.index}>
-        Hello world!
+      <View className="page animated zoomIn">
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
+        <View className={styles.aa}>Hello world!</View>
+        <AtButton type="primary">test</AtButton>
       </View>
-    )
+    );
   }
 }

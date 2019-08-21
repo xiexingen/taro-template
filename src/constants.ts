@@ -11,3 +11,13 @@ export const HTTP_STATUS = {
   SERVICE_UNAVAILABLE: 503,
   GATEWAY_TIMEOUT: 504,
 };
+
+/**
+ * api服务器地址
+ */
+export const API_HOST = '';
+
+/**
+ * 资源文件服务器地址
+ */
+export const ASSETS_HOST = '';

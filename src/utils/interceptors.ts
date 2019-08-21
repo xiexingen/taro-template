@@ -11,8 +11,8 @@ function showError(message: string, show: boolean = true) {
   return Promise.reject(message);
 }
 
-const customInterceptor = function(chain) {
-  const requestParams = chain.requestParams;
+const customInterceptor = chain => {
+  const { requestParams } = chain;
   const { showToast } = requestParams;
   return chain
     .proceed(requestParams)
@@ -28,7 +28,7 @@ const customInterceptor = function(chain) {
         return showError('服务端出现了问题', showToast);
       } else if (res.statusCode === HTTP_STATUS.FORBIDDEN) {
         Taro.setStorageSync('Authorization', '');
-        let path = getCurrentPageUrl();
+        const path = getCurrentPageUrl();
         if (path !== 'pages/login/login') {
           Taro.navigateTo({
             url: '/pages/login/login',
@@ -37,7 +37,7 @@ const customInterceptor = function(chain) {
         return showError('没有权限访问', showToast);
       } else if (res.statusCode === HTTP_STATUS.AUTHENTICATE) {
         Taro.setStorageSync('Authorization', '');
-        let path = getCurrentPageUrl();
+        const path = getCurrentPageUrl();
         if (path !== 'pages/login/login') {
           Taro.navigateTo({
             url: '/pages/login/login',
@@ -45,7 +45,7 @@ const customInterceptor = function(chain) {
         }
         return showError('需要鉴权', showToast);
       } else if (res.statusCode >= 400) {
-        let errorMsg = res.data && res.data.message;
+        const errorMsg = res.data && res.data.message;
         return showError(errorMsg, showToast);
       } else {
         return res.data;

@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import interceptors from "./interceptors";
+import interceptors from './interceptors';
 
 interceptors.forEach(i => Taro.addInterceptor(i));
 
@@ -8,7 +8,7 @@ interface IRequest {
   data?: any;
 }
 
-function request<TInput = any,TOut=any>(opt: Taro.request.Param<TInput>): Promise<any> {
+function request<TInput = any, TOut = any>(opt: Taro.request.Param<TInput>): Promise<any> {
   const option = {
     ...opt,
     header: {
@@ -17,7 +17,7 @@ function request<TInput = any,TOut=any>(opt: Taro.request.Param<TInput>): Promis
     },
   };
 
-  return Taro.request<TOut,TInput>(option);
+  return Taro.request<TOut, TInput>(option);
 }
 
 function get(opt: IRequest | string) {

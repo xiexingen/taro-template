@@ -1,0 +1,9 @@
+@import './scss/vars.scss';
+@import './scss/themes.scss';
+@import './scss/animate.scss';
+@import '~taro-ui/dist/style/index.scss';
+
+.page {
+  background-color: #f5f7fa;
+  min-height: 100%;
+}

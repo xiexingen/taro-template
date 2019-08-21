@@ -1,12 +1,11 @@
 import Taro from '@tarojs/taro';
 
-interface IGlobalData{
-    extraData?:any,
-    systemInfo?:Taro.getSystemInfoSync.Return
+interface IGlobalData {
+  extraData?: any;
+  systemInfo?: Taro.getSystemInfoSync.Return;
 }
 /**
  * 全局数据
  */
-export let globalData:IGlobalData={
-
-};
+// eslint-disable-next-line
+export let globalData: IGlobalData = {};

@@ -1,0 +1,6 @@
+diff a/src/utils/interceptors.ts b/src/utils/interceptors.ts	(rejected hunks)
+@@ -14,2 +14,2 @@ function showError(message: string, show: boolean = true) {
+-const customInterceptor = (chain)=> {
+-  const {requestParams} = chain;
++const customInterceptor = chain => {
++  const { requestParams } = chain;

@@ -1,16 +1,17 @@
 {
-  "extends": ["stylelint-config-taro-rn","stylelint-taro-rn"],
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
   "rules": {
-    "taro-rn/css-property-no-unknown":null,
-    "property-no-vendor-prefix":null,
-    "taro-rn/font-weight-no-ignored-values": null,
-    "at-rule-blacklist": null,
-    "unit-whitelist": null,
-    "selector-pseudo-class-whitelist": null,
-    "selector-max-universal": null,
-    "selector-max-attribute": null,
-    "selector-max-type": null,
-    "selector-max-combinators": null,
-    "selector-max-id": null
+    "declaration-empty-line-before": null,
+    "no-descending-specificity": null,
+    "selector-pseudo-class-no-unknown": null,
+    "selector-pseudo-element-colon-notation": null,
+    "selector-type-no-unknown": null,
+    "unit-case": null,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["function", "if", "each", "include", "mixin"]
+      }
+    ]
   }
 }

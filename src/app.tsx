@@ -1,28 +1,32 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import "@tarojs/async-await";
-import { Provider } from "@tarojs/redux";
-import dva from './dva';
-import {globalData} from './utils/global'
-import {clear} from '@/utils/navigate'
-import models from './models'
-import Index from './pages/index'
-import './app.scss'
+import '@tarojs/async-await';
+import Taro, { Component, Config } from '@tarojs/taro';
+import { Provider } from '@tarojs/redux';
+import dva from '@/dva';
+import { globalData } from '@/utils/global';
+import models from '@/models';
+import Index from '@/pages/index';
+import './app.global.scss';
 
 // h5开发环境开启调试模式
-if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
-  require('nerv-devtools')
+if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5') {
+  // eslint-disable-next-line global-require
+  require('nerv-devtools');
 }
 
-
 const dvaApp = dva.createApp({
-  initialState:{},
-  models:  models,
-})
+  initialState: {},
+  models,
+  onError(e, dispatch) {
+    // eslint-disable-next-line no-console
+    console.error(e);
+  },
+});
+
+global.__APP__ = dvaApp;
 
 const store = dvaApp.getStore();
 
 class App extends Component {
-
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -31,16 +35,14 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: [
-      'pages/index/index'
-    ],
+    pages: ['pages/index/index'],
     window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
-  }
+      backgroundTextStyle: 'dark',
+      navigationBarBackgroundColor: '#385ee8',
+      navigationBarTextStyle: 'white',
+      enablePullDownRefresh: true,
+    },
+  };
 
   /**
    *
@@ -48,40 +50,32 @@ class App extends Component {
    *  2.从二维码进入的参数 globalData.extraData.xx
    *  3.获取小程序的设备信息 globalData.systemInfo
    */
-  async componentDidMount () {
+  async componentDidMount() {
     // 获取参数
-    const referrerInfo:any = this.$router.params.referrerInfo
-    const query = this.$router.params.query
-    !globalData.extraData && (globalData.extraData = {})
+    const { referrerInfo } = this.$router.params;
+    const { query } = this.$router.params;
+    !globalData.extraData && (globalData.extraData = {});
     if (referrerInfo && referrerInfo.extraData) {
-      globalData.extraData = referrerInfo.extraData
+      globalData.extraData = referrerInfo.extraData;
     }
     if (query) {
       globalData.extraData = {
-        ...globalData.extraData
-      }
+        ...globalData.extraData,
+      };
     }
 
     // 获取设备信息
-    const sys = await Taro.getSystemInfoSync()
-    sys && (globalData.systemInfo = sys)
-
-    clear();
+    const sys = await Taro.getSystemInfoSync();
+    sys && (globalData.systemInfo = sys);
   }
 
-  componentDidShow () {}
-
-  componentDidHide () {}
-
-  componentDidCatchError () {}
-
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <Index />
       </Provider>
-    )
+    );
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App />, document.getElementById('app'));

@@ -660,7 +660,7 @@ Taro 编译到小程序端后，每个组件的`constructor`首先会被调用�
 
 在 sass 中通过别名（@ 或 ~）引用其他 sass 文件，有[两个解决方法](https://github.com/NervJS/taro/issues/2478)：
 
-1. 在 js 中用`import '~taro-ui/dist/style/index.scss'`引入
+1. 在 js 中用`import '~taro-ui/dist/style/css/index.scss'`引入
 2. 增加 sass 的 importer 配置，可参考 https://github.com/js-newbee/taro-yanxuan/blob/master/config/index.js
 
 本项目采用的是第二种方法。
