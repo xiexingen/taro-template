@@ -62,5 +62,6 @@
     "import/first":0,
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "class-methods-use-this":["error", { "exceptMethods": ["componeitDidShow","componentDidHide","render","componentWillMount","componentDidMount","componentWillUnmount","componentDidShow","onShareAppMessage"] }],
+    "dot-notation":0
   }
 }
