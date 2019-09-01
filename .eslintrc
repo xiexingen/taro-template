@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": ["airbnb", "prettier", "taro"],
+  "extends": ["o2team", "taro", "prettier", "taro"],
   "rules": {
     "react/sort-comp": 0,
     // "no-unused-vars": [

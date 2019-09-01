@@ -114,9 +114,6 @@ $ yarn dev:rn
 - 数据管理是Redux集成的dva框架，是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架；
 - TypeScript就是所谓的JavaScript超集。它不是JavaScript的替代品，也不会为JavaScript代码添加任何新功能。相反，TypeScript允许程序员在其代码中使用面向对象的构造，然后将其转换为JavaScript。它还包括类型安全和编译时类型检查等便利功能。
 
-
-![Taro](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/taro.jpg)
-
 <!--more-->
 
 > 资料

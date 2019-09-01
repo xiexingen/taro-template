@@ -1,35 +1,26 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es2016",
-    "lib": ["es6", "dom"],
+    "target": "es2017",
+    "module": "commonjs",
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "jsxFactory": "Taro.createElement",
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "lib",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "rootDirs": ["/src", "/test", "/mock", "./typings"],
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "allowJs": true,
-    "experimentalDecorators": true,
+    "rootDir": ".",
+    "jsx": "preserve",
+    "typeRoots": ["node_modules/@types", "global.d.ts"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["./src"],
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts",
-    "tslint:latest",
-    "tslint-config-prettier"
-  ]
+  "compileOnSave": false
 }

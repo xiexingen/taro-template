@@ -2,12 +2,13 @@ import Taro from '@tarojs/taro';
 // import { connect } from '@tarojs/redux';
 import { View } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
+import { PureComponent } from '@/components/BaseComponent';
 import styles from './index.scss';
 
 // @connect(({  }) => ({
 
 // }))
-export default class Index extends Taro.PureComponent {
+export default class Index extends PureComponent<any> {
   /**
    * 指定config的类型声明为: Taro.Config
    *
