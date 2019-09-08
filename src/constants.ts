@@ -13,11 +13,15 @@ export const HTTP_STATUS = {
 };
 
 /**
- * api服务器地址
- */
-export const API_HOST = '';
-
-/**
  * 资源文件服务器地址
  */
-export const ASSETS_HOST = '';
+const ASSETS_HOST = '';
+
+// eslint-disable-next-line import/no-mutable-exports
+let APIPREFIX = 'http://localhost:2000/api/';
+
+if (process.env.NODE_ENV === 'production') {
+  APIPREFIX = 'http://localhost:2000/api/';
+}
+
+export { APIPREFIX, ASSETS_HOST };

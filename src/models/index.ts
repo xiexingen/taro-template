@@ -1,3 +1,4 @@
 import global from './global';
+import user from './user';
 
-export default [global];
+export default [global, user];

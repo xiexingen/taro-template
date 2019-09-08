@@ -1,11 +1,12 @@
 import '@tarojs/async-await';
-import Taro, { Component, Config } from '@tarojs/taro';
+import Taro, { PureComponent, Config } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 import dva from '@/dva';
 import { globalData } from '@/utils/global';
 import models from '@/models';
 import Index from '@/pages/index';
 import './app.global.scss';
+import { INullPureComponentProps } from './types';
 
 // h5开发环境开启调试模式
 if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5') {
@@ -26,7 +27,7 @@ global['__APP__'] = dvaApp;
 
 const store = dvaApp.getStore();
 
-class App extends Component {
+class App extends PureComponent<INullPureComponentProps> {
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -35,7 +36,21 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: ['pages/index/index', 'pages/user/index'],
+    pages: ['pages/user/index', 'pages/index/index'],
+    subPackages: [
+      {
+        root: 'pagesAccount',
+        name: 'pagesAccount',
+        pages: ['pages/login/index'],
+        // independent: true
+      },
+    ],
+    // preloadRule:{
+    //   'pages/index':{
+    //     network: 'all',
+    //     packages: ['pagesAccount']
+    //   }
+    // },
     window: {
       backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#385ee8',
@@ -63,11 +78,11 @@ class App extends Component {
       // backgroundColor: '#fafafa',
       // borderStyle: 'black',
     },
-    // permission:{
-    //     "scope.userInfo": {
-    //         "desc": "你的个人信息将用于小程序信息接口的效果展示"
-    //     }
-    // }
+    // permission: {
+    //   'scope.userInfo': {
+    //     desc: '你的个人信息将用于小程序信息接口的效果展示',
+    //   },
+    // },
   };
 
   /**
