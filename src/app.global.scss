@@ -5,7 +5,11 @@
 @import '~taro-ui/dist/style/index.scss';
 
 // 页面容器样式，全局使用
-.content {
-  background-color: #f5f7fa;
+
+.body {
   min-height: 100%;
+
+  .content {
+    background-color: #f5f7fa;
+  }
 }

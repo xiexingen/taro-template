@@ -31,6 +31,7 @@ const pageTemplate = `import Taro, { Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux';
 import { View } from '@tarojs/components'
 import { PureComponent } from '@/components/BaseComponent'
+import BasicPage from '@/components/BasicPage';
 import { ${componentName}Props } from './${pageName}.interface'
 
 @connect(({ ${modelNamespace} }) => ({
@@ -54,12 +55,9 @@ class ${componentName} extends PureComponent<${componentName}Props> {
 
     render() {
         return (
-            <View className="content animated zoomIn">
+            <BasicPage>
                 页面内容
-                {
-                    this.renderLoading()
-                }
-            </View>
+            </BasicPage>
         )
     }
 }
@@ -81,7 +79,7 @@ import * as ${pageName}Api from './service';
 export default extend({
     namespace: '${modelNamespace}',
     state: {
-        
+
     },
     effects:{
         *getList({ payload }, { call,put }) {
@@ -89,7 +87,7 @@ export default extend({
             yield put({
                 type:'update',
                 payload:{
-                    // TODO 
+                    // TODO
                     result
                 }
             });

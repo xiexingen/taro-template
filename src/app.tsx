@@ -6,7 +6,6 @@ import { globalData } from '@/utils/global';
 import models from '@/models';
 import Index from '@/pages/index';
 import './app.global.scss';
-import { INullPureComponentProps } from './types';
 
 // h5开发环境开启调试模式
 if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5') {
@@ -27,7 +26,7 @@ global['__APP__'] = dvaApp;
 
 const store = dvaApp.getStore();
 
-class App extends PureComponent<INullPureComponentProps> {
+class App extends PureComponent<any> {
   /**
    * 指定config的类型声明为: Taro.Config
    *

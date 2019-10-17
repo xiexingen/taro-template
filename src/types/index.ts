@@ -11,17 +11,7 @@ export interface IPureComponentProps {
   dispatch: IDispatch;
 }
 
-export interface INullPureComponentProps {
-  loading?: boolean;
-  dispatch?: IDispatch;
-}
-
 export interface IComponentProps {
   loading?: boolean;
   dispatch: IDispatch;
-}
-
-export interface INullComponentProps {
-  loading?: boolean;
-  dispatch?: IDispatch;
 }

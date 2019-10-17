@@ -3,6 +3,7 @@ import { connect } from '@tarojs/redux';
 import { View } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
 import { PureComponent } from '@/components/BaseComponent';
+import BasicPage from '@/components/BasicPage';
 import { LoginProps } from './login.interface';
 
 // @ts-ignore
@@ -62,11 +63,11 @@ class Login extends PureComponent<LoginProps> {
 
   render() {
     return (
-      <View className="content animated zoomIn">
+      <BasicPage>
         <AtButton onGetUserInfo={this.handleGetUserInfo} openType="getUserInfo">
           登录
         </AtButton>
-      </View>
+      </BasicPage>
     );
   }
 }
