@@ -30,34 +30,31 @@ if (!pageName) {
 const pageTemplate = `import Taro, { Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux';
 import { View } from '@tarojs/components'
-import { PureComponent } from '@/utils/BaseComponent'
-
-import { ${componentName}Props, ${componentName}State } from './${pageName}.interface'
-import styles from './${pageName}.scss'
+import { PureComponent } from '@/components/BaseComponent'
+import { ${componentName}Props } from './${pageName}.interface'
 
 @connect(({ ${modelNamespace} }) => ({
     ...${modelNamespace},
 }))
-class ${componentName} extends PureComponent<${componentName}Props,${componentName}State > {
+class ${componentName} extends PureComponent<${componentName}Props> {
 
     config:Config = {
         // navigationBarTitleText: '页面标题'
     }
 
-    constructor(props: ${componentName}Props) {
-        super(props)
-        this.state = {
+    // componentWillMount() {}
 
-        }
-    }
+    // componentDidMount() {}
 
-    componentDidMount() {
-        
-    }
+    // componentWillUnmount() {}
+
+    componentDidShow() {}
+
+    // componentDidHide() {}
 
     render() {
         return (
-            <View className={styles.container}>
+            <View className="content animated zoomIn">
                 页面内容
                 {
                     this.renderLoading()
@@ -104,14 +101,14 @@ export default extend({
 const serviceTemplate = `import {get,post} from '@/utils/request';
 import { apiPreFix } from '@/services/config';
 
-export function getList(data){
+export async function getList(data):Promise<any>{
     return get({
         url:\`\${apiPreFix}${pageName}/getList\`,
         data
     });
 }
 
-export function create(data){
+export async function create(data):Promise<any>{
     return post({
         url:\`\${apiPreFix}${pageName}/create\`,
         data
@@ -120,13 +117,7 @@ export function create(data){
 `;
 
 // 属性模板
-const interfaceTemplate = `import { IPureComponentProps } from '@/utils/BaseComponent'
-/**
- * ${pageName} state 参数类型
- */
-export interface ${componentName}State {
-
-}
+const interfaceTemplate = `import { IPureComponentProps } from '@/types';
 
 /**
  * ${pageName} props 参数类型
@@ -134,13 +125,17 @@ export interface ${componentName}State {
 export interface ${componentName}Props extends IPureComponentProps{
 
 }
+/**
+ * ${pageName} state 参数类型
+ */
+// export interface ${componentName}State {}
 `;
 
 fs.mkdirSync(`./src/pages/${pagePath ? pagePath + '/' : ''}${pageName}`, { recursive: true }); // mkdir $1
 process.chdir(`./src/pages/${pagePath ? pagePath + '/' : ''}${pageName}`); // cd $1
 
 fs.writeFileSync(`index.tsx`, pageTemplate); //tsx
-fs.writeFileSync(`index.scss`, scssTemplate); // scss
+// fs.writeFileSync(`index.scss`, scssTemplate); // scss
 fs.writeFileSync('service.ts', serviceTemplate); // service
 fs.writeFileSync('model.ts', modelTemplate); // model
 fs.writeFileSync(`${pageName}.interface.ts`, interfaceTemplate); // interface

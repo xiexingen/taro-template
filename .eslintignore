@@ -10,3 +10,4 @@ jest.config.js
 __mock__/
 .eslintcache
 /src/assets/font
+/scripts

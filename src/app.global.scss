@@ -4,7 +4,8 @@
 @import './scss/animate.scss';
 @import '~taro-ui/dist/style/index.scss';
 
-.page {
+// 页面容器样式，全局使用
+.content {
   background-color: #f5f7fa;
   min-height: 100%;
 }
