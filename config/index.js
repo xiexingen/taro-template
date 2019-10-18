@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-commonjs
 const path = require('path');
 
 const config = {
@@ -12,7 +13,7 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   alias: {
-    //'@': path.resolve(__dirname, '..', 'src'),
+    // '@': path.resolve(__dirname, '..', 'src'),
     '@': 'src',
   },
   plugins: {
@@ -97,7 +98,9 @@ const config = {
 
 module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line global-require
     return merge({}, config, require('./dev'));
   }
+  // eslint-disable-next-line global-require
   return merge({}, config, require('./prod'));
 };

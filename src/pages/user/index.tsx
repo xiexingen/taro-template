@@ -4,6 +4,7 @@ import { View } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
 import { PureComponent } from '@/components/BaseComponent';
 import BasicPage from '@/components/BasicPage';
+import AuthorizationView from '@/components/AuthorizationView';
 import { UserProps } from './user.interface';
 
 @connect(({ user }) => ({
@@ -57,7 +58,7 @@ class User extends PureComponent<UserProps> {
 
   render() {
     return (
-      <BasicPage loading>
+      <BasicPage>
         <View className="text-center">
           <View className="title">
             <View className="title-txt">个人中心</View>
@@ -71,6 +72,9 @@ class User extends PureComponent<UserProps> {
             支付
           </AtButton>
         </View>
+        <AuthorizationView user={null} onAgree={user => {}} onDeny={() => {}}>
+          <View>生成海报</View>
+        </AuthorizationView>
       </BasicPage>
     );
   }
