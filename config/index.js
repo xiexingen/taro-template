@@ -46,11 +46,20 @@ const config = {
   plugins: {
     babel: {
       sourceMap: true,
-      presets: ['env'],
+      presets: [['env', { modules: false }]],
       plugins: [
-        'transform-class-properties',
         'transform-decorators-legacy',
+        'transform-class-properties',
         'transform-object-rest-spread',
+        [
+          'transform-runtime',
+          {
+            helpers: false,
+            polyfill: false,
+            regenerator: true,
+            moduleName: 'babel-runtime',
+          },
+        ],
       ],
     },
     typescript: {
