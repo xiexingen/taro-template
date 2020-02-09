@@ -1,17 +1,14 @@
 {
-  "miniprogramRoot": "dist/",
+  "miniprogramRoot": "./dist",
   "projectname": "taro-template",
   "description": "基于taro+taro-ui+dva的模板项目",
   "appid": "wxf5e38e25bbe4eea6",
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": false,
     "postcss": false,
     "minified": false
   },
   "compileType": "miniprogram",
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
-  "libVersion": "2.8.0",
-  "condition": {}
+  "simulatorType": "wechat"
 }

@@ -1,4 +1,3 @@
-import '@tarojs/async-await';
 import Taro, { PureComponent, Config } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 import dva from '@/dva';
@@ -36,14 +35,14 @@ class App extends PureComponent<any> {
    */
   config: Config = {
     pages: ['pages/user/index', 'pages/index/index'],
-    subPackages: [
-      {
-        root: 'pagesAccount',
-        name: 'pagesAccount',
-        pages: ['pages/login/index'],
-        // independent: true
-      },
-    ],
+    // subPackages: [
+    //   {
+    //     root: 'pagesAccount',
+    //     name: 'pagesAccount',
+    //     pages: ['pages/login/index'],
+    //     // independent: true
+    //   },
+    // ],
     // preloadRule:{
     //   'pages/index':{
     //     network: 'all',
@@ -51,10 +50,10 @@ class App extends PureComponent<any> {
     //   }
     // },
     window: {
-      backgroundTextStyle: 'dark',
-      navigationBarBackgroundColor: '#385ee8',
-      navigationBarTextStyle: 'white',
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'Taro-Template',
+      navigationBarTextStyle: 'black',
       enablePullDownRefresh: true,
     },
     tabBar: {
@@ -72,10 +71,10 @@ class App extends PureComponent<any> {
           selectedIconPath: 'assets/images/tabs/user.png',
         },
       ],
-      color: 'white',
-      selectedColor: '#385ee8',
-      // backgroundColor: '#fafafa',
-      // borderStyle: 'black',
+      color: '#888888',
+      selectedColor: '#0CC0BD',
+      backgroundColor: 'white',
+      borderStyle: 'black',
     },
     // permission: {
     //   'scope.userInfo': {

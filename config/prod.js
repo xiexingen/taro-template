@@ -3,7 +3,10 @@ module.exports = {
   env: {
     NODE_ENV: '"production"',
   },
-  defineConstants: {},
+  defineConstants: {
+    // HOST: isH5 ? HOST_H5 : HOST,
+    // HOST_M: isH5 ? HOST_M_H5 : HOST_M,
+  },
   weapp: {},
   h5: {
     /**

@@ -1,8 +1,9 @@
-import { Component as TComponent, PureComponent as TPureComponent } from '@tarojs/taro';
+import Taro, { Component as TComponent, PureComponent as TPureComponent } from '@tarojs/taro';
 import { DEFAULT_SHAREPROPS } from '@/components/withShare';
 
 export class PureComponent<P = {}, S = {}> extends TPureComponent<P, S> {
-  onShareAppMessage(_: Taro.ShareAppMessageObject): Taro.ShareAppMessageReturn {
+  // @ts-ignore
+  onShareAppMessage(share: Taro.ShareAppMessageObject): Taro.ShareAppMessageReturn {
     return { ...DEFAULT_SHAREPROPS };
   }
 
@@ -18,7 +19,8 @@ export class PureComponent<P = {}, S = {}> extends TPureComponent<P, S> {
 }
 
 export class Component<P = {}, S = {}> extends TComponent<P, S> {
-  onShareAppMessage(_: Taro.ShareAppMessageObject): Taro.ShareAppMessageReturn {
+  // @ts-ignore
+  onShareAppMessage(share: Taro.ShareAppMessageObject): Taro.ShareAppMessageReturn {
     return { ...DEFAULT_SHAREPROPS };
   }
   // renderLoading=(loading:boolean)=>{

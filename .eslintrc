@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": ["o2team", "taro", "prettier", "taro"],
+  "extends": ["o2team", "taro", "prettier"],
   "rules": {
     "react/sort-comp": 0,
     // "no-unused-vars": [
@@ -9,7 +9,7 @@
     //     "ignore":["Taro","Config"]
     //   }
     // ],
-    "no-unused-vars":0,
+    "no-unused-vars": 0,
     "react/no-did-update-set-state": 1,
     "react/jsx-wrap-multilines": 0,
     "react/no-find-dom-node": 0,
@@ -24,7 +24,7 @@
     "jsx-a11y/anchor-is-valid": 0,
     "linebreak-style": 0,
     "import/extensions": 0,
-    "semi":0,
+    "semi": 0,
     "quotes": ["error", "single"],
     "require-yield": 0,
     "eqeqeq": ["error"],
@@ -59,9 +59,23 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
-    "import/first":0,
+    "import/first": 0,
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
-    "class-methods-use-this":["error", { "exceptMethods": ["componeitDidShow","componentDidHide","render","componentWillMount","componentDidMount","componentWillUnmount","componentDidShow","onShareAppMessage"] }],
-    "dot-notation":0
+    "class-methods-use-this": [
+      "error",
+      {
+        "exceptMethods": [
+          "componeitDidShow",
+          "componentDidHide",
+          "render",
+          "componentWillMount",
+          "componentDidMount",
+          "componentWillUnmount",
+          "componentDidShow",
+          "onShareAppMessage"
+        ]
+      }
+    ],
+    "dot-notation": 0
   }
 }
