@@ -25,3 +25,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export { APIPREFIX, ASSETS_HOST };
+
+export const REACH_BOTTOM_EVENT = 'reach_bottom_event';
+export const PULL_DOWN_REFRESH_EVENT = 'pull_down_refresh_event';
+
+export const THROTTLE_DELAY = 1500;

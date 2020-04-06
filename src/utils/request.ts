@@ -8,7 +8,7 @@ interface IRequest {
   data?: any;
 }
 
-function request<TInput = any, TOut = any>(opt: Taro.request.Param<TInput>): Promise<any> {
+function request<TInput = any, TOut = any>(opt: Taro.RequestParams): Promise<any> {
   const option = {
     ...opt,
     header: {

@@ -32,6 +32,20 @@ export const formatCurrency = (str: any) => {
   return `${str}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+export const bytesToSize = (bytes: number | string): string => {
+  bytes = +bytes;
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+  if (bytes === 0) return '0 B';
+  const i = parseInt(`${Math.floor(Math.log(bytes) / Math.log(1024))}`);
+  return `${parseFloat((bytes / Math.pow(1024, i)).toFixed(2))} ${sizes[i]}`;
+};
+
+export const getUniqueId = () => {
+  return Math.random()
+    .toString(36)
+    .substr(2);
+};
+
 // export const base64Encode=(str)=>{
 //   var c1, c2, c3;
 //   var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
