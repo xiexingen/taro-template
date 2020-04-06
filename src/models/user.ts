@@ -1,8 +1,7 @@
 import Taro from '@tarojs/taro';
-import extend from '@/utils/model';
 import { login } from '@/services/user';
 
-export default extend({
+export default {
   namespace: 'user',
   state: {
     // 微信信息
@@ -39,4 +38,12 @@ export default extend({
       return result;
     },
   },
-});
+  reducers: {
+    update(state, { payload }) {
+      return {
+        ...state,
+        ...payload,
+      };
+    },
+  },
+};

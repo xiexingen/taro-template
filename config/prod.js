@@ -7,7 +7,7 @@ module.exports = {
     // HOST: isH5 ? HOST_H5 : HOST,
     // HOST_M: isH5 ? HOST_M_H5 : HOST_M,
   },
-  weapp: {},
+  mini: {},
   h5: {
     /**
      * 如果h5端编译后体积过大，可以使用webpack-bundle-analyzer插件对打包体积进行分析。

@@ -2,14 +2,25 @@
   "parser": "@typescript-eslint/parser",
   "extends": ["o2team", "taro", "prettier"],
   "rules": {
+    "no-unused-vars": ["error", { "varsIgnorePattern": "Taro" }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "Taro" }],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-empty-function": ["warn"],
     "react/sort-comp": 0,
-    // "no-unused-vars": [
-    //   "error",
-    //   {
-    //     "ignore":["Taro","Config"]
-    //   }
-    // ],
-    "no-unused-vars": 0,
     "react/no-did-update-set-state": 1,
     "react/jsx-wrap-multilines": 0,
     "react/no-find-dom-node": 0,
@@ -53,12 +64,6 @@
     "no-param-reassign": 0,
     "no-plusplus": 0,
     "no-underscore-dangle": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
-    ],
     "import/first": 0,
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "class-methods-use-this": [
@@ -77,5 +82,12 @@
       }
     ],
     "dot-notation": 0
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "useJSXTextNode": true,
+    "project": "./tsconfig.json"
   }
 }

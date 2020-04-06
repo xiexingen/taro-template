@@ -1,7 +1,13 @@
-import extend from '@/utils/model';
-
-export default extend({
+export default {
   namespace: 'global',
   state: {},
   effects: {},
-});
+  reducers: {
+    update(state, { payload }) {
+      return {
+        ...state,
+        ...payload,
+      };
+    },
+  },
+};

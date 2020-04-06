@@ -1,13 +1,8 @@
 import Taro from '@tarojs/taro';
-import { ASSETS_HOST } from '@/utils';
 
 export const isH5 = Taro.getEnv() === Taro.ENV_TYPE.WEB;
 
 export const isWechat = Taro.getEnv() === Taro.ENV_TYPE.WEAPP;
-
-export function getAssets(url: string): string {
-  return `${ASSETS_HOST}${url}`;
-}
 
 // 获取当前页url
 export const getCurrentPageUrl = () => {
