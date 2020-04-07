@@ -12,6 +12,10 @@ export interface BasicPageProps {
 export interface BasicPageStates {}
 
 export default class BasicPage extends Component<BasicPageProps, BasicPageStates> {
+  static options = {
+    addGlobalClass: true,
+  };
+
   renderLoading = () => {
     const { loading = false } = this.props;
     return <AtToast isOpened={loading} duration={0} hasMask status="loading" text="加载中..." />;
