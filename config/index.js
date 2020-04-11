@@ -87,30 +87,6 @@ const config = {
       compileOnSave: false,
     },
   },
-  // copy: {
-  //   patterns: [{ from: 'src/custom-tab-bar/', to: 'dist/custom-tab-bar/' }],
-  //   options: {},
-  // },
-  weapp: {
-    module: {
-      postcss: {
-        cssModules: {
-          enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
-          config: {
-            namingPattern: 'global', // 转换模式，取值为 global/module，下文详细说明
-            generateScopedName: '[name]__[local]__[hash:base64:5]',
-          },
-        },
-        autoprefixer: {
-          enable: true,
-        },
-        url: {
-          enable: true,
-          limit: 102400,
-        },
-      },
-    },
-  },
   mini: {
     postcss: {
       autoprefixer: {
@@ -130,9 +106,9 @@ const config = {
         },
       },
       cssModules: {
-        enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+        enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
-          namingPattern: 'module', // 转换模式，取值为 global/module
+          namingPattern: 'global', // 转换模式，取值为 global/module
           generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
