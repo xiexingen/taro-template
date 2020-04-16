@@ -1,9 +1,8 @@
-import Taro, { PureComponent, Config } from '@tarojs/taro';
-import { Provider } from '@tarojs/redux';
-import dva from '@/dva';
-import { globalData } from '@/utils/global';
-import models from '@/models';
-import Index from '@/pages/index';
+import Taro, { PureComponent } from '@tarojs/taro';
+import globalData, { setUser } from '@/globalData';
+import Index from '@/pages/home';
+import { getUser } from '@/services/user';
+import { DEFAULT_SHAREPROPS } from '@/components/withShare';
 import './app.global.scss';
 
 // h5开发环境开启调试模式
@@ -12,20 +11,10 @@ if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5') {
   require('nerv-devtools');
 }
 
-const dvaApp = dva.createApp({
-  initialState: {},
-  models,
-  onError(e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
-  },
-});
-
-global['__APP__'] = dvaApp;
-
-const store = dvaApp.getStore();
-
 class App extends PureComponent<any> {
+  onShareAppMessage(): Taro.ShareAppMessageReturn {
+    return { ...DEFAULT_SHAREPROPS };
+  }
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -33,8 +22,8 @@ class App extends PureComponent<any> {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-  config: Config = {
-    pages: ['pages/user/index', 'pages/index/index'],
+  config: Taro.Config = {
+    pages: ['pages/login/index', 'pages/user/index', 'pages/home/index'],
     // subPackages: [
     //   {
     //     root: 'pagesAccount',
@@ -59,22 +48,22 @@ class App extends PureComponent<any> {
     tabBar: {
       list: [
         {
-          pagePath: 'pages/index/index',
+          pagePath: 'pages/home/index',
           text: '首页',
-          iconPath: 'assets/images/tabs/home.png',
-          selectedIconPath: 'assets/images/tabs/home.png',
+          iconPath: 'assets/images/tabs/record.png',
+          selectedIconPath: 'assets/images/tabs/record-active.png',
         },
         {
           pagePath: 'pages/user/index',
           text: '我的',
-          iconPath: 'assets/images/tabs/user.png',
-          selectedIconPath: 'assets/images/tabs/user.png',
+          iconPath: 'assets/images/tabs/about.png',
+          selectedIconPath: 'assets/images/tabs/about-active.png',
         },
       ],
-      color: '#888888',
-      selectedColor: '#0CC0BD',
-      backgroundColor: 'white',
+      color: '#a9b7b7',
+      selectedColor: '#11cd6e',
       borderStyle: 'black',
+      backgroundColor: '#ffffff',
     },
     // permission: {
     //   'scope.userInfo': {
@@ -106,14 +95,40 @@ class App extends PureComponent<any> {
     // 获取设备信息
     const sys = await Taro.getSystemInfoSync();
     sys && (globalData.systemInfo = sys);
+    if (!globalData.user) {
+      const { code, errMsg } = await Taro.login();
+      if (errMsg !== 'login:ok') {
+        Taro.showToast({
+          title: errMsg,
+          icon: 'none',
+        });
+      }
+      getUser(code).then(result => {
+        result && setUser(result);
+      });
+    }
   }
 
+  update = () => {
+    if (process.env.TARO_ENV === 'weapp') {
+      const updateManager = Taro.getUpdateManager();
+      Taro.getUpdateManager().onUpdateReady(function() {
+        Taro.showModal({
+          title: '更新提示',
+          content: '新版本已经准备好，是否重启应用？',
+          success: res => {
+            if (res.confirm) {
+              // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+              updateManager.applyUpdate();
+            }
+          },
+        });
+      });
+    }
+  };
+
   render() {
-    return (
-      <Provider store={store}>
-        <Index />
-      </Provider>
-    );
+    return <Index />;
   }
 }
 

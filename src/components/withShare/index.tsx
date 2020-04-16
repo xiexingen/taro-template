@@ -11,7 +11,7 @@ export interface IShareProps {
 export const DEFAULT_SHAREPROPS: IShareProps = {
   title: 'Taro-Template',
   imgUrl: defaultLogo,
-  path: 'pages/index/index',
+  path: 'pages/home/index',
 };
 
 const Index = (opts: IShareProps = DEFAULT_SHAREPROPS): any => WrapComponent => {

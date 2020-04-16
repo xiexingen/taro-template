@@ -18,10 +18,10 @@ export const HTTP_STATUS = {
 const ASSETS_HOST = '';
 
 // eslint-disable-next-line import/no-mutable-exports
-let APIPREFIX = 'http://localhost:2000/api/';
+let APIPREFIX = 'https://localhost:44375/';
 
 if (process.env.NODE_ENV === 'production') {
-  APIPREFIX = 'http://localhost:2000/api/';
+  APIPREFIX = 'https://localhost:5001/';
 }
 
 export { APIPREFIX, ASSETS_HOST };

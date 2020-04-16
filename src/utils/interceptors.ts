@@ -29,18 +29,18 @@ const customInterceptor = chain => {
       } else if (res.statusCode === HTTP_STATUS.FORBIDDEN) {
         Taro.setStorageSync('Authorization', '');
         const path = getCurrentPageUrl();
-        if (path !== 'pages/login/login') {
+        if (path !== 'pages/login/index') {
           Taro.navigateTo({
-            url: '/pages/login/login',
+            url: '/pages/login/index',
           });
         } // TODO 根据自身业务修改
         return showError('没有权限访问', showToast);
       } else if (res.statusCode === HTTP_STATUS.AUTHENTICATE) {
         Taro.setStorageSync('Authorization', '');
         const path = getCurrentPageUrl();
-        if (path !== 'pages/login/login') {
+        if (path !== 'pages/login/index') {
           Taro.navigateTo({
-            url: '/pages/login/login',
+            url: '/pages/login/index',
           });
         }
         return showError('需要鉴权', showToast);
