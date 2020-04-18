@@ -9,7 +9,7 @@ export interface IShareProps {
 }
 
 export const DEFAULT_SHAREPROPS: IShareProps = {
-  title: 'Taro-Template',
+  title: '工具箱',
   imgUrl: defaultLogo,
   path: 'pages/home/index',
 };

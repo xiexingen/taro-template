@@ -18,7 +18,7 @@ export default () => {
       const { tab = '/pages/home/index', redirect } = router.params;
       if (redirect) {
         Taro.redirectTo({
-          url: tab,
+          url: redirect,
         });
       } else {
         Taro.switchTab({

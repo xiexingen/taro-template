@@ -1,0 +1,10 @@
+<block wx:if="{{$taroCompReady}}">
+    <basic-page>
+        <view class="{{styles.container}}">
+            <view wx:key="order" class="{{styles.item}}" bindtap="anonymousFunc0" wx:for="{{loopArray1}}" wx:for-item="item" wx:for-index="__index0" data-e-tap-so="this" data-e-tap-a-a="{{item._$indexKey}}">
+                <view class="{{styles.order}}">{{item.$original.order}}</view>
+                <at-list-item compid="{{item.$compid__16}}"></at-list-item>
+            </view>
+        </view>
+    </basic-page>
+</block>

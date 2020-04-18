@@ -5,13 +5,16 @@ import { PULL_DOWN_REFRESH_EVENT } from '@/constants';
 function useRequest<T>(
   params: any,
   request: (params: any) => Promise<T | null>
-): [T | null, () => void] | [] {
+): { data: T | null; loadding: boolean; refresh: () => void } {
   const [currData, setData] = useState<T | null>(null);
   const [count, setCount] = useState(0);
+  const [loadding, setLoadding] = useState(false);
   const pagePullDownRef = useRef('');
 
   useEffect(() => {
+    setLoadding(true);
     request(params).then(data => {
+      setLoadding(false);
       if (data) {
         setData(data);
       }
@@ -40,7 +43,7 @@ function useRequest<T>(
     };
   }, [refresh]);
 
-  return [currData, refresh];
+  return { data: currData, loadding, refresh };
 }
 
 export default useRequest;

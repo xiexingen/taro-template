@@ -1,4 +1,4 @@
-import Taro, { PureComponent } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import globalData, { setUser } from '@/globalData';
 import Index from '@/pages/home';
 import { getUser } from '@/services/user';
@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5') {
   require('nerv-devtools');
 }
 
-class App extends PureComponent<any> {
+class App extends Taro.PureComponent<any> {
   onShareAppMessage(): Taro.ShareAppMessageReturn {
     return { ...DEFAULT_SHAREPROPS };
   }
@@ -23,7 +23,14 @@ class App extends PureComponent<any> {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Taro.Config = {
-    pages: ['pages/login/index', 'pages/user/index', 'pages/home/index'],
+    pages: [
+      'pages/user/index',
+      'pages/home/index',
+
+      'pages/login/index',
+      'pages/sorter/setting',
+      'pages/sorter/index',
+    ],
     // subPackages: [
     //   {
     //     root: 'pagesAccount',
@@ -41,15 +48,15 @@ class App extends PureComponent<any> {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'Taro-Template',
+      navigationBarTitleText: '工具箱',
       navigationBarTextStyle: 'black',
-      enablePullDownRefresh: true,
+      // enablePullDownRefresh: true,
     },
     tabBar: {
       list: [
         {
           pagePath: 'pages/home/index',
-          text: '首页',
+          text: '玩法',
           iconPath: 'assets/images/tabs/record.png',
           selectedIconPath: 'assets/images/tabs/record-active.png',
         },
@@ -61,7 +68,7 @@ class App extends PureComponent<any> {
         },
       ],
       color: '#a9b7b7',
-      selectedColor: '#11cd6e',
+      selectedColor: '#FFC701',
       borderStyle: 'black',
       backgroundColor: '#ffffff',
     },
@@ -81,15 +88,9 @@ class App extends PureComponent<any> {
   async componentDidMount() {
     // 获取参数
     const { referrerInfo } = this.$router.params;
-    const { query } = this.$router.params;
     !globalData.extraData && (globalData.extraData = {});
     if (referrerInfo && referrerInfo['extraData']) {
       globalData.extraData = referrerInfo['extraData'];
-    }
-    if (query) {
-      globalData.extraData = {
-        ...globalData.extraData,
-      };
     }
 
     // 获取设备信息

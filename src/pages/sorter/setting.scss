@@ -1,0 +1,18 @@
+@import '../../scss/themes.scss';
+
+.title {
+  margin-bottom: 60px;
+}
+
+.flag {
+  display: inline-block;
+  background-color: $color-brand-light;
+  color: white;
+  margin-right: 20px;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+.submit {
+  margin: 30px 20px 0 30px;
+}

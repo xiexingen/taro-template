@@ -1,0 +1,11 @@
+<block wx:if="{{$taroCompReady}}">
+    <basic-page compid="{{$compid__74}}">
+        <view class="{{styles.title + ' at-article__p'}}">
+            <view class="{{styles.flag}}">排顺序</view>输入排序主题并选择总人数， 发布后邀请好友参加，用户参与时会被随机分配顺序号码。</view>
+        <at-form>
+            <at-input compid="{{$compid__75}}"></at-input>
+            <at-input compid="{{$compid__76}}"></at-input>
+        </at-form>
+        <at-button compid="{{$compid__77}}">发起排序</at-button>
+    </basic-page>
+</block>

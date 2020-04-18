@@ -1,0 +1,11 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="{{'body animated zoomIn ' + className}}">
+        <template is="renderLoading" data="{{...anonymousState__temp}}"></template>
+        <slot></slot>
+    </view>
+</block>
+<template name="renderLoading">
+    <block>
+        <at-toast compid="{{$compid__117}}"></at-toast>
+    </block>
+</template>

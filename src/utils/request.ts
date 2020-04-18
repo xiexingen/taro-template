@@ -9,10 +9,16 @@ interface IRequest {
 }
 
 function request<TInput = any, TOut = any>(opt: Taro.RequestParams): Promise<any> {
+  const token = Taro.getStorageSync('token');
+  const tokenHeader = {};
+  if (token) {
+    tokenHeader['Authorization'] = `Bearer ${token}`;
+  }
+
   const option = {
     ...opt,
     header: {
-      // 'Authorization': Taro.getStorageSync('Authorization'),
+      ...tokenHeader,
       ...opt.header,
     },
   };

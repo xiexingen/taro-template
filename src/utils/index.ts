@@ -12,15 +12,6 @@ export const getCurrentPageUrl = () => {
   return url;
 };
 
-export const pageToLogin = () => {
-  const path = getCurrentPageUrl();
-  if (!path.includes('login')) {
-    Taro.navigateTo({
-      url: '/pages/login/index',
-    });
-  }
-};
-
 /**
  * 金额千分位格式化
  * @param str 要格式化的金额

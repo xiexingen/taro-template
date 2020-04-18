@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro';
 import { HTTP_STATUS } from '@/constants';
 import { getCurrentPageUrl } from '@/utils/navigate';
+import { cleanToken } from '@/globalData';
 
 function showError(message: string, show: boolean = true) {
   show &&
@@ -27,7 +28,6 @@ const customInterceptor = chain => {
       } else if (res.statusCode === HTTP_STATUS.BAD_GATEWAY) {
         return showError('服务端出现了问题', showToast);
       } else if (res.statusCode === HTTP_STATUS.FORBIDDEN) {
-        Taro.setStorageSync('Authorization', '');
         const path = getCurrentPageUrl();
         if (path !== 'pages/login/index') {
           Taro.navigateTo({
@@ -36,14 +36,8 @@ const customInterceptor = chain => {
         } // TODO 根据自身业务修改
         return showError('没有权限访问', showToast);
       } else if (res.statusCode === HTTP_STATUS.AUTHENTICATE) {
-        Taro.setStorageSync('Authorization', '');
-        const path = getCurrentPageUrl();
-        if (path !== 'pages/login/index') {
-          Taro.navigateTo({
-            url: '/pages/login/index',
-          });
-        }
-        return showError('需要鉴权', showToast);
+        // 没有权限 自动登录一次
+        cleanToken();
       } else if (res.statusCode >= 400) {
         const errorMsg = res.data && res.data.message;
         return showError(errorMsg, showToast);

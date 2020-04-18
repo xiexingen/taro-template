@@ -2,7 +2,7 @@
 const path = require('path');
 
 const config = {
-  projectName: 'taro-template',
+  projectName: '工具箱',
   date: '2019-08-09',
   designWidth: 750,
   deviceRatio: {

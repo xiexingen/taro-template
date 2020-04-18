@@ -1,0 +1,47 @@
+.index__mask___3sNDi {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999; }
+.index__modal-content___1I3Cp {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx; }
+.index__auth-img___19OEW {
+  width: 100rpx;
+  height: 100rpx; }
+.index__tips___2-Vpy {
+  color: #888;
+  font-size: 25rpx;
+  margin-top: 30rpx; }
+.index__auth-btn___ws7h0 {
+  background-color: #08c261;
+  color: #fff;
+  border-radius: 50rpx;
+  width: 500rpx;
+  margin-top: 50rpx; }

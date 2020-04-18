@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* 改变主题变量，具体变量名可查看 https://github.com/NervJS/taro-ui/blob/dev/src/style/variables/default.scss 文件 */
+.setting__title___1SHs0 {
+  margin-bottom: 60rpx; }
+.setting__flag___3VS_1 {
+  display: inline-block;
+  background-color: #ffc701;
+  color: white;
+  margin-right: 20rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 10rpx; }
+.setting__submit___1Bzou {
+  margin: 30rpx 20rpx 0 30rpx; }
