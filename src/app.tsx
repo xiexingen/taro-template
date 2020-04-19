@@ -24,12 +24,12 @@ class App extends Taro.PureComponent<any> {
    */
   config: Taro.Config = {
     pages: [
-      'pages/user/index',
+      'pages/sorter/index',
       'pages/home/index',
+      'pages/user/index',
+      'pages/sorter/setting',
 
       'pages/login/index',
-      'pages/sorter/setting',
-      'pages/sorter/index',
     ],
     // subPackages: [
     //   {
@@ -48,7 +48,7 @@ class App extends Taro.PureComponent<any> {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '工具箱',
+      navigationBarTitleText: '物业抽签',
       navigationBarTextStyle: 'black',
       // enablePullDownRefresh: true,
     },

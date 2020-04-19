@@ -1,10 +1,11 @@
-import Taro, { useRouter, useState } from '@tarojs/taro';
-import { View } from '@tarojs/components';
-import { AtButton, AtIcon, AtAvatar } from 'taro-ui';
-import { useRequest } from '@/hooks';
+import Taro, { useRouter, useState, useDidShow } from '@tarojs/taro';
+import { View, Image } from '@tarojs/components';
+import { AtButton, AtIcon, AtAvatar, AtCurtain } from 'taro-ui';
 import BasicPage from '@/components/BasicPage';
-import { getDetail, takeNumber } from './services/sort';
 import globalData, { checkLoginAndRedirect } from '@/globalData';
+import { DEFAULT_SHAREPROPS } from '@/components/withShare';
+import { APIPREFIX } from '@/constants';
+import { getDetail, takeNumber } from './services/sort';
 
 import styles from './index.scss';
 
@@ -13,36 +14,75 @@ export default () => {
     params: { id },
   } = useRouter();
   const { user = {} } = globalData;
-  const { loadding, data: model } = useRequest(id, getDetail);
+  const [model, setModel] = useState<any>({ total: 0, users: [] });
 
-  const [submitting, setSubmitting] = useState(false);
+  const [qrCodeVisible, changeQrCodeVisible] = useState(false);
+  const [loadding, setLoadding] = useState(false);
+
+  useDidShow(() => {
+    if (!id) {
+      Taro.switchTab({
+        url: '/pages/home/index',
+      });
+    } else {
+      setLoadding(true);
+      getDetail(id).then(result => {
+        if (result.total === 0) {
+          Taro.switchTab({
+            url: '/pages/home/index',
+          });
+        } else {
+          setLoadding(false);
+          setModel(result);
+        }
+      });
+    }
+  });
 
   const handleTack = () => {
     if (
       checkLoginAndRedirect({
-        url: '/pages/login/index?redirect=/pages/sorter/setting',
+        url: `/pages/login/index?redirect=/pages/sorter/index&id=${id}`,
       })
     ) {
-      setSubmitting(true);
+      setLoadding(true);
       takeNumber(id)
         .then(result => {
-          setSubmitting(false);
           const preUsers = model.users.filter(m => m.orderNo < result.orderNo);
           const postUsers = model.users.filter(m => m.orderNo > result.orderNo);
           const newItem = { ...result, avatarUrl: user['avatarUrl'], nickName: user.nickName };
-          model.users = [...preUsers, newItem, ...postUsers];
+          setModel({
+            ...model,
+            currentUser: newItem,
+            users: [...preUsers, newItem, ...postUsers],
+          });
+          setLoadding(false);
         })
         .catch(() => {
           Taro.showToast({
             title: '出错啦，请重试!!!',
           });
-          setSubmitting(true);
+          setLoadding(true);
         });
     }
   };
 
+  Taro.useShareAppMessage(() => {
+    return {
+      ...DEFAULT_SHAREPROPS,
+      path: `/pages/sorter/index?id=${id}`,
+    };
+  });
+  if (model.userId === user.id) {
+    Taro.showShareMenu({
+      withShareTicket: true,
+    });
+  } else {
+    Taro.hideShareMenu();
+  }
+
   return (
-    <BasicPage className={styles.body} loading={loadding || submitting}>
+    <BasicPage className={styles.body} loading={loadding}>
       <View className={styles.header}>
         <View className="at-article">
           <View className={`${styles['header-title']} at-article__h2`}>{model.title}</View>
@@ -95,6 +135,20 @@ export default () => {
       <View className="t-center">
         <AtIcon color="#e7ebed" value="chevron-down" />
       </View>
+      {qrCodeVisible ? (
+        <View>
+          <AtCurtain onClose={() => {}} isOpened={qrCodeVisible}>
+            <Image style="width:100%;height:250px" src={`${APIPREFIX}api/wechat/${id}`} />
+          </AtCurtain>
+          <AtButton
+            onClick={() => {
+              changeQrCodeVisible(false);
+            }}
+          >
+            右上关闭幕帘
+          </AtButton>
+        </View>
+      ) : null}
     </BasicPage>
   );
 };

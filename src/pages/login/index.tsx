@@ -2,6 +2,7 @@ import Taro, { useDidShow, useRouter } from '@tarojs/taro';
 import { View, Image, Button } from '@tarojs/components';
 import AuthImage from '@/assets/images/pages/icon_wechat_auth.png';
 import globalData, { setUser } from '@/globalData';
+import { queryToString } from '@/utils';
 import { login } from '@/services/user';
 import styles from './index.scss';
 
@@ -16,9 +17,10 @@ export default () => {
     const userInfo = globalData.user;
     if (userInfo) {
       const { tab = '/pages/home/index', redirect } = router.params;
+      const query = queryToString(router.params, ['tab', 'redirect']);
       if (redirect) {
         Taro.redirectTo({
-          url: redirect,
+          url: `${redirect}${query}`,
         });
       } else {
         Taro.switchTab({

@@ -53,7 +53,8 @@ export default () => {
         </View>
       ) : (
         <View onClick={handleLogin} className={styles.header}>
-          点击登录
+          <AtAvatar circle text="" />
+          <View className={styles.nickName}>点击登录</View>
         </View>
       )}
       <View className={styles.operator}>
@@ -85,7 +86,7 @@ export default () => {
             title={item.title}
             thumb={item.avatarUrl}
             note={item.nickName}
-            extraText={dayjs(item.createTime).format('MM-DD hh:mm')}
+            extraText={dayjs(item.createTime).format('MM-DD HH:mm')}
             onClick={handleView.bind(null, item.id)}
           />
         ))}

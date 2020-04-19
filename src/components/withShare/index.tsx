@@ -9,7 +9,7 @@ export interface IShareProps {
 }
 
 export const DEFAULT_SHAREPROPS: IShareProps = {
-  title: '工具箱',
+  title: '物业抽签',
   imgUrl: defaultLogo,
   path: 'pages/home/index',
 };

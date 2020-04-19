@@ -18,10 +18,10 @@ export const HTTP_STATUS = {
 const ASSETS_HOST = '';
 
 // eslint-disable-next-line import/no-mutable-exports
-let APIPREFIX = 'https://localhost:44375/';
-
+let APIPREFIX = 'https://api.collection.52dibo.com/';
+// let APIPREFIX = 'https://localhost:44375/';
 if (process.env.NODE_ENV === 'production') {
-  APIPREFIX = 'https://localhost:5001/';
+  APIPREFIX = 'https://api.collection.52dibo.com/';
 }
 
 export { APIPREFIX, ASSETS_HOST };

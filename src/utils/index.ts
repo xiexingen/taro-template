@@ -37,6 +37,44 @@ export const getUniqueId = () => {
     .substr(2);
 };
 
+/**
+ * 对象转查询字符串 {redirect:'',id:''} ==> ?redirect=xxxx&id=1
+ * @param query 对象
+ * @param ignores 要忽略的键
+ */
+export const queryToString = (query: { [key: string]: string }, ignores?: string[]) => {
+  const strQuery: string[] = [];
+  for (const key in query) {
+    if (query.hasOwnProperty(key)) {
+      const pKey = encodeURIComponent(key);
+      if (ignores && ignores.indexOf(pKey) !== -1) {
+        continue;
+      }
+      strQuery.push(`${pKey}=${encodeURIComponent(query[key])}`);
+    }
+  }
+  if (strQuery.length > 0) {
+    return `?${strQuery.join('&')}`;
+  }
+  return '';
+};
+
+/**
+ * 查询字符串转对象 ?redirect=xxxx&id=1 ==>{redirect:'',id:''}
+ */
+export const stringToQuery = (url: string) => {
+  const result: any = {};
+  if (url.indexOf('?') !== -1) {
+    const queryArray = url.split('?')[1].split('&');
+    for (const i in queryArray) {
+      const pars = queryArray[i].split('=');
+      result[decodeURIComponent(pars[0])] = decodeURIComponent(pars[1]);
+    }
+  }
+
+  return result;
+};
+
 // export const base64Encode=(str)=>{
 //   var c1, c2, c3;
 //   var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";

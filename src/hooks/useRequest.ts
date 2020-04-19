@@ -4,7 +4,8 @@ import { PULL_DOWN_REFRESH_EVENT } from '@/constants';
 
 function useRequest<T>(
   params: any,
-  request: (params: any) => Promise<T | null>
+  request: (params: any) => Promise<T | null>,
+  defaultData: T
 ): { data: T | null; loadding: boolean; refresh: () => void } {
   const [currData, setData] = useState<T | null>(null);
   const [count, setCount] = useState(0);
@@ -43,7 +44,7 @@ function useRequest<T>(
     };
   }, [refresh]);
 
-  return { data: currData, loadding, refresh };
+  return { data: currData || defaultData, loadding, refresh };
 }
 
 export default useRequest;
