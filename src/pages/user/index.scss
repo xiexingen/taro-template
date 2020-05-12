@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  padding-left: 50px;
+  border-radius: 5px;
+  box-shadow: 0.001rem 0.118rem 0.118rem 0.10067rem rgba(26, 26, 26, 0.1);
+  padding-bottom: 20px;
+}
+
+.nickName {
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+.operator {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item {
+  display: inline-block;
+  width: 280px;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 0;
+}
