@@ -1,9 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view class="{{styles.mask}}">
-        <view class="{{styles['modal-content']}}">
-            <image src="{{AuthImage}}" class="{{styles['auth-img']}}"></image>
-            <view class="{{styles.tips}}">请求获得你的头像和昵称用来注册</view>
-            <button class="{{styles['auth-btn']}}" open-type="getUserInfo" bindgetuserinfo="anonymousFunc0">一键授权</button>
-        </view>
-    </view>
-</block>
