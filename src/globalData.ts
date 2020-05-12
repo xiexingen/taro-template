@@ -1,15 +1,15 @@
 import Taro from '@tarojs/taro';
 
 interface IGlobalData {
-  extraData?: any;
-  systemInfo?: Taro.getSystemInfoSync.Result;
-  user?: { [key: string]: any };
-  [key: string]: any;
+  extraData?: any
+  systemInfo?: Taro.getSystemInfoSync.Result
+  user?: { [key: string]: any }
+  [key: string]: any
 }
 
 interface ICheckProp {
-  url?: string;
-  tab?: string;
+  url?: string
+  tab?: string
 }
 
 /**
