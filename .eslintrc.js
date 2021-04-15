@@ -4,6 +4,6 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-closing-bracket-location': 'off',
-    'no-shadow': { hoist: 'never' },
+    'no-shadow': 'off',
   },
 };
