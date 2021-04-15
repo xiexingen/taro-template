@@ -1,17 +1,17 @@
-import { useState, useEffect, useCallback, useRef, usePullDownRefresh } from '@tarojs/taro';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { usePullDownRefresh } from '@tarojs/taro';
 import events from '@/utils/eventBus';
 import { PULL_DOWN_REFRESH_EVENT } from '@/constants';
 
 function useRequest<T>(
   params: any,
   request: (params: any) => Promise<T | null>,
-  defaultData: T
+  defaultData: T,
 ): { data: T | null; loadding: boolean; refresh: () => void } {
   const [currData, setData] = useState<T | null>(null);
   const [count, setCount] = useState(0);
   const [loadding, setLoadding] = useState(false);
   const pagePullDownRef = useRef('');
-
   useEffect(() => {
     setLoadding(true);
     request(params).then(data => {

@@ -1,7 +1,8 @@
-import { useRef, usePullDownRefresh } from '@tarojs/taro';
+import { useRef } from 'react';
+import { usePullDownRefresh } from '@tarojs/taro';
 
 import events from '@/utils/eventBus';
-import { PULL_DOWN_REFRESH_EVENT } from '../constants';
+import { PULL_DOWN_REFRESH_EVENT } from '@/constants';
 import { getUniqueId } from '@/utils';
 
 function usePullDownRefreshEvent() {

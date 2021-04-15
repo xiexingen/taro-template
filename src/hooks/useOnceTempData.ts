@@ -14,16 +14,21 @@ interface ICheckProp<T> {
  */
 function useOnceTempData<T = any>(
   defaultValue: T,
-  key: string = USE_ONCE_TEMP_DATA
+  key: string = USE_ONCE_TEMP_DATA,
 ): [T, (prop: ICheckProp<T>) => boolean] {
-  const storeKe = key === USE_ONCE_TEMP_DATA ? key : `${USE_ONCE_TEMP_DATA}_${key}`;
+  const storeKe =
+    key === USE_ONCE_TEMP_DATA ? key : `${USE_ONCE_TEMP_DATA}_${key}`;
 
   let storeData = Taro.getStorageSync(storeKe);
   if (storeData) {
     Taro.removeStorageSync(storeKe);
   }
 
-  const checkLoginAndRedirect = ({ data, url, tab }: ICheckProp<T>): boolean => {
+  const checkLoginAndRedirect = ({
+    data,
+    url,
+    tab,
+  }: ICheckProp<T>): boolean => {
     if (globalData.user) {
       return true;
     }
