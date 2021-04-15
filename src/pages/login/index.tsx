@@ -1,10 +1,11 @@
+import React from 'react';
 import Taro, { useDidShow, useRouter } from '@tarojs/taro';
 import { View, Image, Button } from '@tarojs/components';
 import AuthImage from '@/assets/images/pages/icon_wechat_auth.png';
 import globalData, { setUser } from '@/globalData';
 import { queryToString } from '@/utils';
 import { login } from '@/services/user';
-import styles from './index.scss';
+import styles from './index.module.scss';
 
 export default () => {
   const router = useRouter();
@@ -59,7 +60,10 @@ export default () => {
       <View className={styles['modal-content']}>
         <Image src={AuthImage} className={styles['auth-img']} />
         <View className={styles.tips}>请求获得你的头像和昵称用来注册</View>
-        <Button className={styles['auth-btn']} openType="getUserInfo" onGetUserInfo={onGetUserInfo}>
+        <Button
+          className={styles['auth-btn']}
+          openType='getUserInfo'
+          onGetUserInfo={onGetUserInfo}>
           一键授权
         </Button>
       </View>
