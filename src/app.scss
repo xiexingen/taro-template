@@ -1,0 +1,18 @@
+// @import '~taro-ui/dist/style/themes/purple.scss';
+@import "./assets/scss/vars.scss";
+@import "./assets/scss/themes.scss";
+// @import './assets/scss/animate.scss';
+@import "~taro-ui/dist/style/index.scss";
+
+// 页面容器样式，全局使用
+.body {
+  min-height: 100%;
+
+  .content {
+    background-color: #f5f7fa;
+  }
+
+  .t-center {
+    text-align: center;
+  }
+}

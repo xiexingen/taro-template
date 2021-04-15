@@ -1,12 +1,8 @@
-// eslint-disable-next-line import/no-commonjs
 module.exports = {
   env: {
-    NODE_ENV: '"production"',
+    NODE_ENV: '"production"'
   },
-  defineConstants: {
-    // HOST: isH5 ? HOST_H5 : HOST,
-    // HOST_M: isH5 ? HOST_M_H5 : HOST_M,
-  },
+  defineConstants: {},
   mini: {},
   h5: {
     /**
@@ -17,5 +13,6 @@ module.exports = {
      *     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
      * }
      */
-  },
+    esnextModules: ["taro-ui"]
+  }
 };

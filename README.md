@@ -1,4 +1,4 @@
-# 基于taro+dva+taro-ui+typescript的多端开发框架
+# 基于taro 3.x +dva+taro-ui 3.x +typescript的多端开发框架
 
 ## 目录
 

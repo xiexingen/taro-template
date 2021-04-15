@@ -2,6 +2,5 @@ dist/
 .temp/
 .rn_temp/
 node_modules/
-.DS_Store
-yarn.lock
+img/
 yarn-error.log
