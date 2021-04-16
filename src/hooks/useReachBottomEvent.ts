@@ -1,6 +1,7 @@
-import { useRef, useReachBottom } from '@tarojs/taro';
+import { useRef } from 'react';
+import { useReachBottom } from '@tarojs/taro';
 import events from '@/utils/eventBus';
-import { REACH_BOTTOM_EVENT, THROTTLE_DELAY } from '../constants';
+import { REACH_BOTTOM_EVENT, THROTTLE_DELAY } from '@/constants';
 import { getUniqueId } from '@/utils';
 
 function useReachBottomEvent() {

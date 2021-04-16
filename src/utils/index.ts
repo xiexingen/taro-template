@@ -42,7 +42,10 @@ export const getUniqueId = () => {
  * @param query 对象
  * @param ignores 要忽略的键
  */
-export const queryToString = (query: { [key: string]: string }, ignores?: string[]) => {
+export const queryToString = (
+  query: { [key: string]: string } | Partial<Record<string, string>>,
+  ignores?: string[],
+) => {
   const strQuery: string[] = [];
   for (const key in query) {
     if (query.hasOwnProperty(key)) {
