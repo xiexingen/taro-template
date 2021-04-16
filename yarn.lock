@@ -1558,7 +1558,7 @@
   dependencies:
     "@tarojs/runtime" "3.2.1"
 
-"@tarojs/cli@3.2.1":
+"@tarojs/cli@^3.2.1":
   version "3.2.1"
   resolved "https://registry.npm.taobao.org/@tarojs/cli/download/@tarojs/cli-3.2.1.tgz#e619fe2c365b389b10f27624695d070ba46e4242"
   integrity sha1-5hn+LDZbOJsQ8nYkaV0HC6RuQkI=
