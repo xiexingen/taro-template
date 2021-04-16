@@ -53,7 +53,7 @@ export const queryToString = (
       if (ignores && ignores.indexOf(pKey) !== -1) {
         continue;
       }
-      strQuery.push(`${pKey}=${encodeURIComponent(query[key])}`);
+      strQuery.push(`${pKey}=${encodeURIComponent(query[key] || '')}`);
     }
   }
   if (strQuery.length > 0) {
