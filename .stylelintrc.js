@@ -1,7 +1,10 @@
 module.exports = {
-  extends: 'stylelint-config-standard',
+  extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
   plugins: ['stylelint-scss'],
   rules: {
+    'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
+    'no-descending-specificity': null,
+    'no-duplicate-selectors': null,
     'declaration-colon-newline-after': null,
     'at-rule-no-unknown': null,
     'color-hex-case': null,

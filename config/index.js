@@ -2,7 +2,7 @@ import { resolve } from 'path';
 
 const config = {
   projectName: 'taro-template',
-  date: '2021-4-15',
+  date: "2022-1-2",
   designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
@@ -65,20 +65,6 @@ const config = {
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
           generateScopedName: '[name]__[local]___[hash:base64:5]',
-        },
-      },
-    },
-  },
-  // 小程序端
-  weapp: {
-    module: {
-      postcss: {
-        cssModules: {
-          enable: true,
-          config: {
-            namingPattern: 'module',
-            generateScopedName: '[name]__[local]___[hash:base64:5]',
-          },
         },
       },
     },

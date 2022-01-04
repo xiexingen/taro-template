@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import dva from './utils/dva';
+import models from './models/index';
 import './app.scss';
 
-import configStore from './store';
-
-const store = configStore();
+const dvaApp = dva.createApp({
+  initialState: {},
+  models: models,
+});
+const store = dvaApp.getStore();
 
 class App extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    if (process.env.TARO_ENV === 'weapp') {
+      // 云开发初始化
+      // Taro.cloud.init({env:'',traceUser: true,})
+    }
+  }
 
   // 在小程序环境中对应 app 的 onLaunch。
   onLaunch() {

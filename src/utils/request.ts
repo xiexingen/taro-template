@@ -1,66 +1,72 @@
 import Taro from '@tarojs/taro';
-import interceptors from './interceptors';
+import axios from 'taro-axios';
+// import interceptors from './interceptors';
 
-interceptors.forEach(i => Taro.addInterceptor(i));
+// interceptors.forEach(i => Taro.addInterceptor(i));
 
-interface IRequest {
-  url: string;
-  data?: any;
-}
+const service = axios.create({
+  baseURL: '',
+  withCredentials: true,
+  timeout: 300000,
+});
 
-function request<TInput = any, TOut = any>(opt: Taro.RequestParams): Promise<any> {
-  const token = Taro.getStorageSync('token');
-  const tokenHeader = {};
-  if (token) {
-    tokenHeader['Authorization'] = `Bearer ${token}`;
-  }
+// interface IRequest {
+//   url: string;
+//   data?: any;
+// }
 
-  const option = {
-    ...opt,
-    header: {
-      ...tokenHeader,
-      ...opt.header,
-    },
-  };
+// function request<TInput = any, TOut = any>(opt: Taro.RequestParams): Promise<any> {
+//   const token = Taro.getStorageSync('token');
+//   const tokenHeader = {};
+//   if (token) {
+//     tokenHeader['Authorization'] = `Bearer ${token}`;
+//   }
 
-  return Taro.request<TOut, TInput>(option);
-}
+//   const option = {
+//     ...opt,
+//     header: {
+//       ...tokenHeader,
+//       ...opt.header,
+//     },
+//   };
+//   return Taro.request<TOut, TInput>(option);
+// }
 
-function get(opt: IRequest | string) {
-  let option: IRequest;
-  if (typeof opt === 'string') {
-    option = {
-      url: opt as string,
-    };
-  } else {
-    option = opt as IRequest;
-  }
-  return request({
-    ...option,
-    method: 'GET',
-  });
-}
+// function get(opt: IRequest | string) {
+//   let option: IRequest;
+//   if (typeof opt === 'string') {
+//     option = {
+//       url: opt as string,
+//     };
+//   } else {
+//     option = opt as IRequest;
+//   }
+//   return request({
+//     ...option,
+//     method: 'GET',
+//   });
+// }
 
-function post(opt: IRequest) {
-  return request({
-    ...opt,
-    method: 'POST',
-  });
-}
+// function post(opt: IRequest) {
+//   return request({
+//     ...opt,
+//     method: 'POST',
+//   });
+// }
 
-function put(opt: IRequest) {
-  return request({
-    method: 'PUT',
-    ...opt,
-  });
-}
+// function put(opt: IRequest) {
+//   return request({
+//     method: 'PUT',
+//     ...opt,
+//   });
+// }
 
-function del(opt: IRequest) {
-  return request({
-    method: 'DELETE',
-    ...opt,
-  });
-}
+// function del(opt: IRequest) {
+//   return request({
+//     method: 'DELETE',
+//     ...opt,
+//   });
+// }
 
-export default request;
-export { get, post, put, del };
+// export default request;
+// export { get, post, put, del };

@@ -1,4 +1,23 @@
 /* 改变主题变量，具体变量名可查看 https://github.com/NervJS/taro-ui/blob/dev/src/style/variables/default.scss 文件 */
+@import '~taro-ui/dist/style/index.scss';
+
 $color-brand: #f37b1d;
 $color-brand-light: #ffc701;
 $color-brand-dark: #c26217;
+
+/* 改变主题变量，具体变量名可查看 https://github.com/NervJS/taro-ui/blob/dev/src/style/variables/default.scss 文件 */
+// $imgUrl: '';
+
+// /**
+//  * 元素居中定位
+//  */
+// @mixin absolute-center($pos: absolute) {
+//   position: $pos;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
+// .alert-danger {
+//   @include absolute-center('absolute');
+// }
