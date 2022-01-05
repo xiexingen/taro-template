@@ -18,11 +18,13 @@
     "jsx": "react",
     "allowJs": true,
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types", "global.d.ts"],
+    "typeRoots": ["node_modules/@types", "types/**/*"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
+  "types": ["types/**/*", "node_modules/**/*"],
+  "include": ["src/**/*", "types/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist"],
   "compileOnSave": false
 }

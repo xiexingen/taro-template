@@ -9,7 +9,10 @@ declare module '*.scss';
 declare module '*.sass';
 declare module '*.styl';
 
-// @ts-ignore
+export interface IKeyValue<T = any> {
+  [key: string]: T;
+}
+
 declare const process: {
   env: {
     TARO_ENV:
